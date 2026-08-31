@@ -134,4 +134,48 @@ body.rm-theme-page {
 .rm-small {
   font-size: var(--rm-text-sm);
 }
+
+/* Ported from reelmetric-script-web/static/css/styles.css by T152.03 (D10). */
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  color: var(--rm-charcoal);
+  background: linear-gradient(135deg, var(--rm-paper) 0%, #f5f0e6 100%);
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Subtle film grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* The bare *,*::before,*::after reset here is safe in any layer: it is
+   !important, and important declarations invert normal layer order (earlier
+   layer wins), so it overrides every non-important transition/animation
+   declared in components/overrides regardless of this layer's position.
+   The one non-important sub-rule from the source media query, `.reveal`'s
+   opacity/transform reset, is NOT safe here: base is cascade-earlier than
+   components, so a non-important base rule can never beat a non-important
+   components rule (.reveal's default opacity:0). That one line is ported
+   into components.css's `@layer utilities` block instead, next to `.reveal`
+   itself, where utilities' later position makes the override actually apply. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
 }
