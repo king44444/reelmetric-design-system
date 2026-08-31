@@ -981,6 +981,81 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ── Landing hero (T152.04) ── ported verbatim from reelmetric-landing's
+   index.html page-local <style> block. A standalone marketing splash page
+   with no header/nav chrome — deliberately not built on .rm-theme-page's
+   cascade (that would swap this page's Arial/Georgia/Impact type for the
+   rest of the site's Inter), so tokens are referenced directly. Colors:
+   --black(#000)->--rm-black, --white(#f7f7f4)->--rm-cream(#ffffff, ~3%
+   channel delta, imperceptible), --muted(#1d1d1a)->--rm-charcoal(#1a1a1a,
+   ~2% delta) — the source page's unused fourth token, --soft, has no
+   equivalent and was not ported (grep-confirmed zero uses in index.html). */
+.rm-landing-page {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--rm-black);
+  background: var(--rm-cream);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.rm-landing-stage {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--rm-cream);
+  border: 0;
+  border-radius: 0;
+}
+
+.rm-landing-topline,
+.rm-landing-tagline {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding: clamp(0.8rem, 1.6vw, 1.4rem) clamp(0.8rem, 1.8vw, 1.8rem);
+  font-size: clamp(1rem, 1.75vw, 1.7rem);
+  line-height: 1;
+}
+
+.rm-landing-contact {
+  justify-self: end;
+  text-align: right;
+}
+
+.rm-landing-main {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  padding: clamp(0.7rem, 1.6vw, 1.4rem) clamp(0.4rem, 0.9vw, 0.9rem);
+  text-align: center;
+}
+
+.rm-landing-wordmark {
+  margin: 0;
+  color: var(--rm-black);
+  font-family: Impact, Haettenschweiler, "Arial Black", "Franklin Gothic Heavy", sans-serif;
+  font-size: clamp(5.1rem, 15.8vw, 19rem);
+  font-stretch: condensed;
+  font-weight: 900;
+  letter-spacing: clamp(-0.015em, 0.08vw, 0.02em);
+  line-height: 0.78;
+  text-transform: uppercase;
+  max-width: calc(100vw - clamp(1rem, 2vw, 1.8rem));
+  transform: scaleY(1.48);
+  transform-origin: center;
+  white-space: nowrap;
+}
+
+.rm-landing-tagline {
+  grid-template-columns: 1fr;
+  padding-bottom: clamp(1.4rem, 2.4vw, 2rem);
+  color: var(--rm-charcoal);
+  font-family: Georgia, "Times New Roman", serif;
+  text-align: center;
+}
 }
 
 @layer utilities {
@@ -1075,6 +1150,27 @@
 
   .rm-cta {
     padding: 2rem 1.15rem;
+  }
+
+  /* Landing hero (T152.04). The source rule's .stage sub-override at this
+     breakpoint (min-height/border/border-radius) duplicated its own base
+     rule byte-for-byte — a no-op, confirmed by diff — and was not ported. */
+  .rm-landing-topline {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+
+  .rm-landing-contact {
+    justify-self: start;
+    text-align: left;
+  }
+
+  .rm-landing-wordmark {
+    font-size: clamp(3.2rem, 15.5vw, 6.8rem);
+    letter-spacing: 0em;
+    max-width: calc(100vw - 1rem);
+    transform: scaleY(1.22);
+    white-space: nowrap;
   }
 }
 
