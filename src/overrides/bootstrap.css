@@ -1,0 +1,7 @@
+/* Bootstrap CDN override surface. ADR-0054 SS3 keeps the Bootstrap CDN link
+   in consuming templates; this layer is where a consumer's Bootstrap-default
+   override rules live so they always lose to `components`/`report` in the
+   cascade regardless of source order. Empty until a consumer (T152.03) needs
+   an actual override — an empty layer is valid CSS and changes nothing. */
+@layer overrides {
+}

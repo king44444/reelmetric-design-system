@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Build twice, assert byte-identical output (reproducibility)
+        run: |
+          make build
+          sha256sum dist/* > /tmp/rmds_a.txt
+          make build
+          sha256sum dist/* > /tmp/rmds_b.txt
+          diff /tmp/rmds_a.txt /tmp/rmds_b.txt && echo "REPRODUCIBLE"
+
+      - name: Run tests
+        run: make test
+
+      - name: Confirm this repo stays Python-only (ADR-0054 SS2.3)
+        run: bash scripts/check_no_js_toolchain.sh

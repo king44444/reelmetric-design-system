@@ -1,0 +1,51 @@
+/* Design tokens — seeded from reelmetric-script-web/static/css/reelmetrics-theme.css
+   as it stood after T151.10 (monochrome set). ADR-0054 SS2.2. */
+@layer tokens {
+:root {
+  color-scheme: dark;
+
+  /* Color palette — monochrome only (T151.10). Names are kept for a smaller diff;
+     values are black/white/neutral-gray so every rule built on these tokens,
+     used or not, resolves to monochrome without a per-rule rewrite. */
+  --rm-ink: #0a0a0a;
+  --rm-ink-2: #141414;
+  --rm-panel: #1c1c1c;
+  --rm-panel-2: #242424;
+  --rm-cream: #ffffff;
+  --rm-paper: #fafafa;
+  --rm-muted: #9a9a9a;
+  --rm-muted-2: #737373;
+  --rm-line: rgba(255, 255, 255, 0.14);
+  --rm-line-strong: rgba(255, 255, 255, 0.28);
+  /* Legacy accent-token names, still consumed by the unused landing-hero rules
+     below (0 references in the six submitter templates as of T151.10) — kept
+     monochrome so nothing that later reuses them regains color by accident. */
+  --rm-gold: #3a3a3a;
+  --rm-gold-2: #737373;
+  --rm-red: #2b2b2b;
+  --rm-teal: #2b2b2b;
+  --rm-blue: #2b2b2b;
+
+  /* Typography scale */
+  --rm-font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --rm-font-serif: Georgia, "Times New Roman", serif;
+  --rm-text-xs: 0.78rem;
+  --rm-text-sm: 0.9rem;
+  --rm-text-md: 1rem;
+  --rm-text-lg: 1.15rem;
+  --rm-text-xl: 1.45rem;
+  --rm-text-2xl: 2rem;
+  --rm-text-3xl: 3rem;
+  --rm-text-4xl: 4.7rem;
+
+  /* Layout and spacing */
+  --rm-page-pad: 1.5rem;
+  --rm-container: 1180px;
+  --rm-section: 6rem;
+  --rm-section-tight: 4rem;
+  --rm-radius: 8px;
+  --rm-radius-sm: 6px;
+  --rm-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+  --rm-shadow-soft: 0 16px 34px rgba(0, 0, 0, 0.18);
+}
+}

@@ -1,0 +1,8 @@
+/* Report-specific layer. ADR-0054 SS2.2.
+   Placeholder for now: report_user.html, decision_package.html, and
+   worksheet_public.html keep their own template-local <style> blocks until
+   the extraction phase (T152.03/T152.06 name this explicitly). This file
+   exists so the @layer order is complete and consumers have a stable target
+   to extract into later — it is not populated by this task. */
+@layer report {
+}
