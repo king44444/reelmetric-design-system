@@ -736,6 +736,251 @@
 .rm-footer a:hover {
   color: var(--rm-cream);
 }
+
+/* Ported from reelmetric-script-web/static/css/styles.css by T152.03 (D10) —
+   app-specific components with no equivalent in the shared set above. */
+
+/* ── Status rows / badges (platform_status.html, platform_submit_success.html) ── */
+.status-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--rm-light-gray);
+}
+.status-row:last-child {
+  border-bottom: none;
+}
+.status-row-center {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  align-items: baseline;
+  padding: 0.6rem 0 1rem;
+}
+.status-label {
+  color: var(--rm-slate);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.status-desc {
+  color: var(--rm-slate);
+  font-size: 0.92rem;
+  text-align: center;
+  margin: 0 0 1rem;
+}
+.status-details {
+  margin-top: 0.75rem;
+}
+
+/* Status badge: weight and a leading marker carry meaning, not color. */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid #d0d0d0;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  color: #333333;
+  background: #f5f5f5;
+}
+.status-badge::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #a3a3a3;
+}
+.status-badge.status-released {
+  border-color: #000000;
+  color: #000000;
+  background: #ffffff;
+  font-weight: 800;
+}
+.status-badge.status-released::before {
+  background: #000000;
+}
+.status-badge.status-failed {
+  border-color: #000000;
+  border-width: 2px;
+  color: #000000;
+  background: #ffffff;
+}
+.status-badge.status-failed::before {
+  background: #000000;
+}
+
+.link-accent {
+  color: #000000;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* ── Progress timeline (platform_status.html) ───────────────────────────── */
+.progress-timeline {
+  display: flex;
+  justify-content: space-between;
+  margin: 1.5rem 0;
+  position: relative;
+}
+.progress-timeline-track {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: #e0e0e0;
+  z-index: 0;
+  transform: translateY(-50%);
+}
+.progress-timeline-step {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  width: 20%;
+}
+.progress-timeline-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #c7c7c7;
+  margin: 0 auto 0.5rem;
+}
+.progress-timeline-dot.active {
+  background: #ffffff;
+  border-color: #000000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+.progress-timeline-dot.done {
+  background: #000000;
+  border-color: #000000;
+}
+.progress-timeline-dot.done::after {
+  content: "\2713";
+  display: block;
+  color: #ffffff;
+  font-size: 13px;
+  line-height: 20px;
+}
+.progress-timeline-label {
+  font-size: 0.85rem;
+  color: #737373;
+}
+.progress-timeline-label.active {
+  color: #000000;
+  font-weight: 700;
+}
+
+/* ── Form controls (upload.html) ─────────────────────────────────────────── */
+.form-section + .form-section {
+  margin-top: 1.25rem;
+}
+.form-label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--rm-charcoal);
+}
+.form-help {
+  margin: 0.35rem 0 0;
+  font-size: 0.82rem;
+  color: var(--rm-slate);
+}
+.form-help.text-danger {
+  color: #000000;
+  font-weight: 700;
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.92rem;
+}
+
+/* ── Designed upload control (replaces the bare native file input) ───────── */
+.rm-dropzone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 2rem 1.5rem;
+  border: 1px dashed #b5b5b5;
+  border-radius: 10px;
+  background: #fafafa;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 150ms ease, background 150ms ease;
+}
+.rm-dropzone:hover,
+.rm-dropzone.is-dragover {
+  border-color: #000000;
+  background: #f2f2f2;
+}
+.rm-dropzone input[type="file"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.rm-dropzone-icon {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid #000000;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+.rm-dropzone-title {
+  font-weight: 700;
+  color: var(--rm-charcoal);
+}
+.rm-dropzone-meta {
+  font-size: 0.82rem;
+  color: var(--rm-slate);
+}
+.rm-dropzone-filename {
+  display: none;
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  background: #000000;
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+.rm-dropzone-filename.is-visible {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ── Scroll reveal (optional JS triggers .reveal; static/js/scroll-reveal.js) ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 }
 
 @layer utilities {
@@ -842,6 +1087,16 @@
   }
 
   .rm-button:hover {
+    transform: none;
+  }
+
+  /* Ported from styles.css's reduced-motion block by T152.03 — kept here
+     rather than in base.css alongside its sibling !important reset, because
+     this override is not !important and `components` (declared later in
+     the @layer statement) would otherwise always beat a same-priority rule
+     in `base` regardless of source order. See the note in base.css. */
+  .reveal {
+    opacity: 1;
     transform: none;
   }
 }

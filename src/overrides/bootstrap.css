@@ -1,7 +1,112 @@
 /* Bootstrap CDN override surface. ADR-0054 SS3 keeps the Bootstrap CDN link
    in consuming templates; this layer is where a consumer's Bootstrap-default
    override rules live so they always lose to `components`/`report` in the
-   cascade regardless of source order. Empty until a consumer (T152.03) needs
-   an actual override — an empty layer is valid CSS and changes nothing. */
+   cascade regardless of source order.
+
+   Populated by T152.03 (D10) from reelmetric-script-web/static/css/styles.css
+   lines 29-38 (the --bs-* variable block) and its Bootstrap component
+   restyles (.btn-primary, .btn-secondary, .card, .form-control:focus, the
+   .alert family). Every var(...) is rewritten from styles.css's own local
+   token names onto the --rm-* vocabulary in tokens.css — see the mapping
+   note there. No second token vocabulary is introduced. */
 @layer overrides {
+
+:root {
+  --bs-body-bg: var(--rm-paper);
+  --bs-body-color: var(--rm-charcoal);
+  --bs-link-color: var(--rm-black);
+  --bs-link-hover-color: var(--rm-charcoal-hover);
+  --bs-border-color: var(--rm-light-gray);
+  --bs-heading-color: var(--rm-charcoal);
+  --bs-card-bg: var(--rm-cream);
+  --bs-card-border-color: var(--rm-light-gray);
+}
+
+.btn-primary {
+  background: var(--rm-black);
+  border-color: var(--rm-black);
+  color: #fff;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  transition: all 0.15s ease-out;
+}
+.btn-primary:hover {
+  background: var(--rm-charcoal-hover);
+  border-color: var(--rm-charcoal-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+.btn-secondary {
+  background: transparent;
+  border-color: var(--rm-light-gray);
+  color: var(--rm-charcoal);
+  border-radius: 6px;
+}
+.btn-secondary:hover {
+  border-color: var(--rm-black);
+  color: var(--rm-black);
+}
+
+.card {
+  background: var(--rm-cream);
+  border: 1px solid var(--rm-light-gray);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-control:focus {
+  border-color: var(--rm-black);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15);
+}
+
+/* Monochrome: severity is distinguished by border weight and a text label,
+   not by color (user_surface_audit_2026-08-23.md SSDesign Direction). */
+.alert {
+  position: relative;
+  border-radius: 8px;
+  border: none;
+  border-left: 3px solid var(--rm-light-gray);
+  background: #f7f7f7;
+  color: var(--rm-charcoal);
+  padding-left: 1rem;
+}
+.alert::before {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6b6b6b;
+}
+.alert-info::before {
+  content: "Note";
+}
+.alert-success::before {
+  content: "Done";
+}
+.alert-warning {
+  border-left-color: #6b6b6b;
+}
+.alert-warning::before {
+  content: "Warning";
+}
+.alert-danger,
+.alert-error {
+  border-left-width: 4px;
+  border-left-color: #000000;
+  background: #f0f0f0;
+}
+.alert-danger::before,
+.alert-error::before {
+  content: "Error";
+  color: #000000;
+}
+
 }

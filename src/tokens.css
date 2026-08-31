@@ -47,5 +47,17 @@
   --rm-radius-sm: 6px;
   --rm-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
   --rm-shadow-soft: 0 16px 34px rgba(0, 0, 0, 0.18);
+
+  /* T152.03: script-web's static/css/styles.css defined its own 13-name token
+     vocabulary (--charcoal, --slate, --amber, --muted, --border, --panel,
+     --panel-white, --script-white, --light-gray, --bg, --text, --accent,
+     --accent-hv) with no --rm-* equivalent for these five distinct values.
+     --panel/--panel-white/--script-white/--bg already had exact matches
+     (--rm-cream, --rm-paper) and are not duplicated here. */
+  --rm-charcoal: #1a1a1a;
+  --rm-charcoal-hover: #262626;
+  --rm-slate: #595959;
+  --rm-light-gray: #e5e5e5;
+  --rm-black: #000000;
 }
 }
