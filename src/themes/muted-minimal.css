@@ -1,0 +1,82 @@
+/* T153.04 -- Concept 1/4: muted-minimal.
+   Brief: the current black-and-white report, opened to a narrow chromatic
+   budget -- one accent hue, low saturation, used only for state and data
+   (market pills, caveat titles, print highlights). Closest to today and the
+   lowest-risk outcome if it wins (phase 153 D3: tokens only, see
+   docs/theme_override_contract.md).
+
+   The one accent is a muted slate-teal (~#3d6b7a); --rm-red/--rm-teal/--rm-blue
+   are deliberately mapped to the same hue rather than left distinct, because
+   "narrow chromatic budget" means this concept has exactly one hue to spend,
+   not three unused ones. Everything else is a small warm-neutral shift off
+   the seeded pure black/white (T151.10), not a redesign.
+
+   --rm-muted and --rm-gold below are LIGHT tints, not dark ones, on purpose.
+   Grep confirms report.css's only use of --rm-muted (.dp-section-sub,
+   .dp-field-label, .dp-caveat p) and of --rm-gold/--rm-gold-2 (.dp-market-pill,
+   .dp-caveat-title) sits on the permanently-dark document panel
+   (--rm-report-doc-panel-bg), so even this light overall concept needs a
+   light value there to read -- a dark "accent" text was this task's own
+   first draft, caught failing WCAG AA by this task's contrast checker.
+   Carried finding, not fixed here: components.css separately uses --rm-gold
+   as text color on light landing backgrounds for large display numerals
+   (.rm-step-number / .rm-score-number), a second, conflicting role no single
+   value can satisfy at both AA thresholds simultaneously (checked by hand;
+   this task's contrast tool only checks report.css, per its own docstring). */
+@layer overrides {
+[data-theme="muted-minimal"] {
+  color-scheme: light;
+
+  --rm-ink: #171512;
+  --rm-ink-2: #211f1b;
+  --rm-panel: #221f1b;
+  --rm-panel-2: #2b2822;
+  --rm-cream: #ffffff;
+  --rm-paper: #faf9f7;
+  --rm-muted: #b7c1c6;
+  --rm-muted-2: #56524c;
+  --rm-line: rgba(23, 21, 18, 0.12);
+  --rm-line-strong: rgba(23, 21, 18, 0.24);
+
+  --rm-gold: #8fc4d4;
+  --rm-gold-2: #b7dbe5;
+  --rm-red: #8fc4d4;
+  --rm-teal: #8fc4d4;
+  --rm-blue: #8fc4d4;
+
+  --rm-charcoal: #2b2926;
+  --rm-charcoal-hover: #3a3733;
+  --rm-slate: #57534e;
+  --rm-light-gray: #e7e3de;
+  --rm-black: #171512;
+
+  --rm-report-muted: #635f58;
+  --rm-report-body: #443f39;
+  --rm-report-border: #ddd8d2;
+  --rm-report-border-soft: #e2ded8;
+  --rm-report-border-chip: #d8d3cc;
+  --rm-report-border-card: #e6e2db;
+  --rm-report-border-hair: #ececea;
+
+  --rm-report-doc-panel-bg: rgba(23, 21, 18, 0.9);
+  --rm-report-doc-shadow: 0 22px 60px rgba(0, 0, 0, .3);
+  --rm-report-doc-track-bg: rgba(255, 255, 255, .08);
+  --rm-report-doc-field-bg: rgba(255, 255, 255, .03);
+  --rm-report-doc-hair: rgba(255, 255, 255, .05);
+  --rm-report-doc-accent-2: #8fc4d4;
+  --rm-report-doc-accent-bg-soft: rgba(47, 89, 103, .12);
+  --rm-report-doc-accent-border: rgba(47, 89, 103, .34);
+  --rm-report-doc-accent-bg: rgba(47, 89, 103, .2);
+  --rm-report-doc-accent-bg-hover: rgba(47, 89, 103, .28);
+
+  --rm-report-doc-print-border: #ccc;
+  --rm-report-doc-print-ink: #171512;
+  --rm-report-doc-print-muted: #4d4a44;
+  --rm-report-doc-print-muted-2: #66625b;
+  --rm-report-doc-print-track-bg: #eee;
+  --rm-report-doc-print-accent: #2f5967;
+  --rm-report-doc-print-accent-dark: #1c363e;
+  --rm-report-doc-print-accent-bg: #eef3f4;
+  --rm-report-doc-print-pill-bg: #dbe6e8;
+}
+}

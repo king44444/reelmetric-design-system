@@ -30,5 +30,11 @@ the full rule; the short version:
   selector, a font-size, a layout change — fails the build with
   `ThemeContractViolation`. A concept that needs more than that is out of
   contract (phase 153 D3) and gets reported, not quietly accommodated.
-- **This directory is empty as of T153.02.** The mechanism is built here;
-  authoring the four concepts is T153.04's job.
+- **Populated by T153.04** with the phase's four concepts: `dense-tool.css`,
+  `editorial.css`, `muted-minimal.css`, `radical.css` (sorted order == build
+  order). None is active by default — a theme file sitting here renders
+  nothing until something sets `data-theme` on the page (T153.06's job for
+  the winner); see each file's own header comment for its brief and for the
+  report.css tokenization gap it ran into (report/document type scale and
+  spacing are hardcoded rem/px literals, not tokens, so a concept reaches
+  them only through color and inherited font-family today).

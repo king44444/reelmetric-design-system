@@ -1,0 +1,136 @@
+/* T153.04 -- Concept 2/4: radical.
+   Brief: deliberately far from today, and different in structure, not only
+   palette -- type scale, density, whether the report reads as a document or
+   a dashboard (phase 153 D3: tokens only, see docs/theme_override_contract.md).
+
+   Finding 1, carried rather than worked around: reelmetric-design-system/
+   src/report.css hardcodes every font-size, border-radius, spacing, and
+   container-width literal for the .ru-*/.dp-*/.wp-* families directly in
+   rem/px -- none of it reads --rm-text-*, --rm-radius*, --rm-shadow*,
+   --rm-section*, or --rm-container (confirmed by grep; zero matches). Only
+   report.css's *colors* and its inherited font-family (via body.rm-theme-page)
+   are tokenized today. This concept delivers "far from today" through a full
+   dark-mode palette inversion, a genuinely different (denser, geometric)
+   sans stack, and a much larger data/heading contrast range -- the token
+   levers that actually reach the report -- while --rm-text-*/--rm-radius/
+   --rm-shadow/--rm-section/--rm-container widen the *app-chrome and landing*
+   surfaces (components.css does consume those). Making the report's own type
+   scale and spacing concept-selectable needs new tokens in report.css -- out
+   of this task's scope (D3 forbids a template/CSS-structure edit here) and
+   named as a follow-up rather than solved by widening the contract silently.
+
+   Finding 2, and the more load-bearing one: --rm-cream cannot be one value
+   for a fully dark-inverted report. report.css uses it two incompatible
+   ways -- as a light-card *background* paired with dark ink in the report
+   family (.ru-hero-copy: background var(--rm-cream), color var(--rm-charcoal))
+   and as a *foreground text color* on the permanently-dark document panel in
+   the decision-package/worksheet family (.dp-section h2, .dp-field-value:
+   color var(--rm-cream)). Once ink (--rm-charcoal/--rm-black) flips light
+   for a dark report page, the first role needs --rm-cream dark (so ink stays
+   legible on it); the second role needs --rm-cream light regardless (its
+   background, the document panel, is independently always dark). No single
+   value satisfies both, and there is no token-only way to give the two
+   selectors different values -- that would mean editing report.css itself,
+   out of scope here. Verified by exhausting both directions with this task's
+   contrast checker rather than asserted: cream dark passes every .ru-* pair
+   and fails the two .dp-*/.wp-* panel-text pairs; cream light does the exact
+   reverse.
+
+   Resolution: this concept keeps --rm-cream dark and prioritizes the report
+   family, which is the phase's actual subject ("whether *the report* reads
+   as a document or a dashboard") -- the decision-package/worksheet family
+   predates T151.10's monochrome pass and was already flagged in T153.03's
+   own completion notes as a "pre-existing, half-converted inconsistency,
+   preserved exactly as-is." To keep that family passing too rather than
+   silently regressing it, --rm-report-doc-panel-bg and its neighboring
+   track/field/hair tokens are flipped *light* here (a light document card
+   floating on the dark dashboard canvas), which requires --rm-muted and
+   --rm-gold to go dark again within that one family, in the opposite
+   direction from how this concept uses them everywhere else. This is a
+   real, deliberate per-surface split, not an oversight -- read together with
+   this comment. */
+@layer overrides {
+[data-theme="radical"] {
+  color-scheme: dark;
+
+  --rm-ink: #f4f5f7;
+  --rm-ink-2: #dfe2e8;
+  --rm-panel: #15161d;
+  --rm-panel-2: #1c1e28;
+  --rm-cream: #12131a;
+  --rm-paper: #0a0b0f;
+  --rm-line: rgba(255, 255, 255, 0.14);
+  --rm-line-strong: rgba(255, 255, 255, 0.26);
+
+  /* --rm-muted and --rm-gold/--rm-gold-2 are dark here, not light, because
+     their only consumer in report.css (.dp-section-sub/.dp-field-label/
+     .dp-caveat p, and .dp-market-pill/.dp-caveat-title) is the document
+     panel below, which this concept flips light -- see the header comment's
+     Finding 2. Everywhere else in this concept "muted"/"accent" reads light
+     (--rm-report-muted, the report family's own separate token, stays light
+     a few lines down) -- this is the one deliberate exception. */
+  --rm-muted: #4a4f57;
+  --rm-muted-2: #c1c7d6;
+  --rm-gold: #7a4a00;
+  --rm-gold-2: #a8720a;
+  --rm-red: #ff5470;
+  --rm-teal: #2ec4b6;
+  --rm-blue: #5390ff;
+
+  --rm-charcoal: #f4f5f7;
+  --rm-charcoal-hover: #dfe2e8;
+  --rm-slate: #aab2c5;
+  --rm-light-gray: #262a35;
+  --rm-black: #ffffff;
+
+  --rm-font-sans: "Space Grotesk", "Segoe UI", Inter, ui-sans-serif, system-ui,
+    -apple-system, sans-serif;
+
+  --rm-text-xs: 0.8rem;
+  --rm-text-sm: 0.92rem;
+  --rm-text-md: 1.05rem;
+  --rm-text-lg: 1.3rem;
+  --rm-text-xl: 1.65rem;
+  --rm-text-2xl: 2.3rem;
+  --rm-text-3xl: 3.4rem;
+  --rm-text-4xl: 5.4rem;
+
+  --rm-page-pad: 1.25rem;
+  --rm-container: 1360px;
+  --rm-section: 5rem;
+  --rm-section-tight: 3rem;
+  --rm-radius: 16px;
+  --rm-radius-sm: 10px;
+  --rm-shadow: 0 32px 90px rgba(0, 0, 0, .6);
+  --rm-shadow-soft: 0 18px 44px rgba(0, 0, 0, .46);
+
+  --rm-report-muted: #9aa2b5;
+  --rm-report-body: #cdd2de;
+  --rm-report-border: rgba(255, 255, 255, .16);
+  --rm-report-border-soft: rgba(255, 255, 255, .12);
+  --rm-report-border-chip: rgba(255, 255, 255, .18);
+  --rm-report-border-card: rgba(255, 255, 255, .16);
+  --rm-report-border-hair: rgba(255, 255, 255, .1);
+
+  --rm-report-doc-panel-bg: rgba(244, 241, 234, .94);
+  --rm-report-doc-shadow: 0 26px 70px rgba(0, 0, 0, .5);
+  --rm-report-doc-track-bg: rgba(18, 19, 26, .1);
+  --rm-report-doc-field-bg: rgba(18, 19, 26, .04);
+  --rm-report-doc-hair: rgba(18, 19, 26, .08);
+  --rm-report-doc-accent-2: #a8720a;
+  --rm-report-doc-accent-bg-soft: rgba(168, 114, 10, .12);
+  --rm-report-doc-accent-border: rgba(168, 114, 10, .34);
+  --rm-report-doc-accent-bg: rgba(168, 114, 10, .18);
+  --rm-report-doc-accent-bg-hover: rgba(168, 114, 10, .26);
+
+  --rm-report-doc-print-border: #ccc;
+  --rm-report-doc-print-ink: #f4f1ea;
+  --rm-report-doc-print-muted: #c1c7d6;
+  --rm-report-doc-print-muted-2: #9aa2b5;
+  --rm-report-doc-print-track-bg: rgba(255, 255, 255, .12);
+  --rm-report-doc-print-accent: #ffb703;
+  --rm-report-doc-print-accent-dark: #ffcf6b;
+  --rm-report-doc-print-accent-bg: #2b2410;
+  --rm-report-doc-print-pill-bg: #241f0e;
+}
+}
