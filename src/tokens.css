@@ -66,5 +66,103 @@
   --rm-slate: #595959;
   --rm-light-gray: #e5e5e5;
   --rm-black: #000000;
+
+  /* T153.03 -- report surface (report_user.html, .ru-*). Every value below is
+     a value-for-value transcription of a literal this template's own inline
+     style block used to hardcode; nothing was redesigned, only named. Black,
+     white, --rm-paper's gray, --rm-muted's gray, and --rm-charcoal's gray
+     already had exact matches above and are reused, not duplicated. */
+  --rm-report-muted: #6b6b6b;
+  --rm-report-body: #4a4a4a;
+  --rm-report-border: #d9d9d9;
+  --rm-report-border-soft: #dcdcdc;
+  --rm-report-border-chip: #d0d0d0;
+  --rm-report-border-card: #e2e2e2;
+  --rm-report-border-hair: #ececec;
+
+  /* T153.03 -- document surface (decision_package.html .dp-*, worksheet_public.html
+     .wp-* -- near-identical dark navy/gold layouts, predating T151.10's monochrome
+     pass and never converted; preserved as-is, per D7, not corrected here). Screen
+     values shared by both templates: */
+  --rm-report-doc-panel-bg: rgba(22, 27, 36, 0.88);
+  --rm-report-doc-shadow: 0 22px 60px rgba(0, 0, 0, .34);
+  --rm-report-doc-track-bg: rgba(255, 255, 255, .07);
+  --rm-report-doc-field-bg: rgba(255, 255, 255, .025);
+  --rm-report-doc-hair: rgba(255, 255, 255, .04);
+  --rm-report-doc-accent-2: #f5c86a;
+  --rm-report-doc-accent-bg-soft: rgba(232, 174, 77, .08);
+  --rm-report-doc-accent-border: rgba(232, 174, 77, .3);
+  /* decision_package.html only (print button / market pill): */
+  --rm-report-doc-accent-bg: rgba(232, 174, 77, .14);
+  --rm-report-doc-accent-bg-hover: rgba(232, 174, 77, .22);
+  /* decision_package.html's @media print block -- a separate, print-safe
+     light palette layered on top of the screen colors above. */
+  --rm-report-doc-print-border: #ccc;
+  --rm-report-doc-print-ink: #111;
+  --rm-report-doc-print-muted: #555;
+  --rm-report-doc-print-muted-2: #666;
+  --rm-report-doc-print-track-bg: #eee;
+  --rm-report-doc-print-accent: #d4a843;
+  --rm-report-doc-print-accent-dark: #8a6d1b;
+  --rm-report-doc-print-accent-bg: #fff8e6;
+  --rm-report-doc-print-pill-bg: #f5e6c8;
+
+  /* T153.03 -- script-web's static/sample_report.html: a wholly separate dark
+     orange/blue visual language with its own page-local :root, none of it
+     related to the report/document families above. Moved wholesale, prefixed
+     to avoid colliding with any future unrelated use of a generic name like
+     --accent or --shadow; original page-local names kept as the suffix so
+     the mapping back to the source rules is legible. */
+  --rm-report-sr-bg: #0f1116;
+  --rm-report-sr-bg-end: #0c0e13;
+  --rm-report-sr-bg-soft: #151923;
+  --rm-report-sr-panel: rgba(22, 26, 36, 0.9);
+  --rm-report-sr-panel-strong: #1d2230;
+  --rm-report-sr-line: rgba(255, 255, 255, 0.08);
+  --rm-report-sr-line-strong: rgba(255, 255, 255, 0.12);
+  --rm-report-sr-text: #f4efe7;
+  --rm-report-sr-muted: #a6afbf;
+  --rm-report-sr-accent: #ff9d00;
+  --rm-report-sr-accent-soft: rgba(255, 157, 0, 0.12);
+  --rm-report-sr-accent-2: #49b3ff;
+  --rm-report-sr-good: #49d39b;
+  --rm-report-sr-warn: #f5b84b;
+  --rm-report-sr-shadow: 0 22px 60px rgba(0, 0, 0, 0.34);
+  --rm-report-sr-radius-xl: 24px;
+  --rm-report-sr-radius-lg: 18px;
+  --rm-report-sr-radius-md: 14px;
+  --rm-report-sr-radius-sm: 10px;
+  /* Additional one-off literals used directly in sample_report.html's rules,
+     never routed through its own page-local :root: */
+  --rm-report-sr-glow-1: rgba(255, 157, 0, 0.14);
+  --rm-report-sr-glow-2: rgba(73, 179, 255, 0.11);
+  --rm-report-sr-surface-veil: rgba(255, 255, 255, 0.03);
+  --rm-report-sr-on-accent: #101217;
+  --rm-report-sr-accent-dark: #e87c1f;
+  --rm-report-sr-track-bg: rgba(255, 255, 255, 0.07);
+  --rm-report-sr-track-bg-2: rgba(255, 255, 255, 0.08);
+  --rm-report-sr-ring-inner-1: rgba(21, 25, 35, 0.96);
+  --rm-report-sr-ring-inner-2: rgba(16, 18, 24, 0.96);
+  --rm-report-sr-accent-glow: rgba(255, 157, 0, 0.16);
+  --rm-report-sr-accent-border: rgba(255, 157, 0, 0.22);
+  --rm-report-sr-accent-light: #ffd280;
+  --rm-report-sr-accent2-light: #9fe1ff;
+  --rm-report-sr-good-bg: rgba(73, 211, 155, 0.12);
+  --rm-report-sr-accent-pale: #ffcb6b;
+  --rm-report-sr-card-bg: rgba(255, 255, 255, 0.025);
+
+  /* T153.03 -- landing's static/sample_report.html: a third, light amber/slate
+     card layout, also page-local before this task. var(--slate)/var(--amber)/
+     var(--border)/var(--text) referenced by that file are pre-existing,
+     already-undefined custom properties (no declaration anywhere in this
+     repo's committed CSS) -- left exactly as-is (D7): defining them now would
+     change what currently renders, which is a fix, not an extraction, and out
+     of this task's scope. */
+  --rm-report-lsr-pill-bg: rgba(255, 255, 255, 0.74);
+  --rm-report-lsr-track-bg: rgba(74, 85, 104, 0.12);
+  --rm-report-lsr-accent-light: #ffbe40;
+  --rm-report-lsr-shadow-glow: rgba(255, 157, 0, 0.2);
+  --rm-report-lsr-note-bg: rgba(255, 157, 0, 0.08);
+  --rm-report-lsr-card-bg: rgba(255, 255, 255, 0.72);
 }
 }
