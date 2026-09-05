@@ -2,7 +2,14 @@
    as it stood after T151.10 (monochrome set). ADR-0054 SS2.2. */
 @layer tokens {
 :root {
-  color-scheme: dark;
+  /* T153.02 (D9): this declared dark while the page beneath it renders
+     light (--rm-paper #fafafa / --rm-ink #0a0a0a, T151.10's monochrome
+     set) -- asking the browser for dark form controls and scrollbars on a
+     white page. Corrected to match what actually renders. A concept whose
+     own page is dark may override this directly in its own [data-theme]
+     block -- color-scheme is the one native (non --rm-*) property the
+     override contract allows, see docs/theme_override_contract.md. */
+  color-scheme: light;
 
   /* Color palette — monochrome only (T151.10). Names are kept for a smaller diff;
      values are black/white/neutral-gray so every rule built on these tokens,
