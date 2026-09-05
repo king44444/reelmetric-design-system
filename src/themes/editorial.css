@@ -1,0 +1,99 @@
+/* T153.04 -- Concept 3/4: editorial.
+   Brief: serif, generous, reads as a research memo -- the direction that
+   suits the "market intelligence" positioning (phase 153 D3: tokens only).
+
+   The report/document family (report.css) doesn't declare its own
+   font-family -- it inherits from body.rm-theme-page, which reads
+   var(--rm-font-sans) (confirmed by grep: no font-family rule anywhere in
+   .ru-*/.dp-*/.wp-*). There is no separate --rm-font-report token to flip
+   just the report serif, so this concept overrides --rm-font-sans itself to
+   hold a serif stack -- a deliberate token-name/value mismatch, allowed by
+   the contract (any declared --rm-* token may be set to any value) and
+   noted here so it reads as a choice, not an error. --rm-font-serif is set
+   to the same family so anything in components.css that already reads it
+   directly (landing hero/section headings) matches rather than clashes.
+   Generous spacing and a warmer, higher-contrast ink/paper carry the rest of
+   "research memo" through the surfaces tokens actually reach.
+
+   --rm-muted and --rm-gold below are light tints, not dark ones -- see
+   muted-minimal.css's header comment for why (report.css's only use of
+   either sits on the permanently-dark document panel, so even a light
+   concept needs a light value there; components.css's separate, conflicting
+   use of --rm-gold as light-landing text is a carried finding, not fixed
+   here). */
+@layer overrides {
+[data-theme="editorial"] {
+  color-scheme: light;
+
+  --rm-font-sans: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --rm-font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+
+  --rm-ink: #1c1912;
+  --rm-ink-2: #262219;
+  --rm-panel: #241f16;
+  --rm-panel-2: #2e281c;
+  --rm-cream: #fffdf8;
+  --rm-paper: #faf6ec;
+  --rm-muted: #c9bfa8;
+  --rm-muted-2: #4f4a3e;
+  --rm-line: rgba(28, 25, 18, 0.14);
+  --rm-line-strong: rgba(28, 25, 18, 0.26);
+
+  --rm-gold: #d9a860;
+  --rm-gold-2: #e8c48c;
+  --rm-red: #d9a860;
+  --rm-teal: #d9a860;
+  --rm-blue: #d9a860;
+
+  --rm-charcoal: #2c2717;
+  --rm-charcoal-hover: #3b3420;
+  --rm-slate: #5c5646;
+  --rm-light-gray: #ece5d4;
+  --rm-black: #1c1912;
+
+  --rm-text-xs: 0.82rem;
+  --rm-text-sm: 0.95rem;
+  --rm-text-md: 1.08rem;
+  --rm-text-lg: 1.25rem;
+  --rm-text-xl: 1.55rem;
+  --rm-text-2xl: 2.15rem;
+  --rm-text-3xl: 3.15rem;
+  --rm-text-4xl: 4.6rem;
+
+  --rm-section: 7rem;
+  --rm-section-tight: 4.5rem;
+  --rm-radius: 4px;
+  --rm-radius-sm: 3px;
+  --rm-shadow: 0 20px 50px rgba(38, 30, 12, .2);
+  --rm-shadow-soft: 0 12px 28px rgba(38, 30, 12, .14);
+
+  --rm-report-muted: #5c5546;
+  --rm-report-body: #3a3324;
+  --rm-report-border: #e4dcc7;
+  --rm-report-border-soft: #ece5d4;
+  --rm-report-border-chip: #ded5bd;
+  --rm-report-border-card: #ece5d4;
+  --rm-report-border-hair: #f0eadd;
+
+  --rm-report-doc-panel-bg: rgba(28, 25, 18, .9);
+  --rm-report-doc-shadow: 0 24px 60px rgba(38, 30, 12, .3);
+  --rm-report-doc-track-bg: rgba(255, 253, 248, .08);
+  --rm-report-doc-field-bg: rgba(255, 253, 248, .035);
+  --rm-report-doc-hair: rgba(255, 253, 248, .06);
+  --rm-report-doc-accent-2: #d9a860;
+  --rm-report-doc-accent-bg-soft: rgba(122, 74, 23, .1);
+  --rm-report-doc-accent-border: rgba(122, 74, 23, .32);
+  --rm-report-doc-accent-bg: rgba(122, 74, 23, .18);
+  --rm-report-doc-accent-bg-hover: rgba(122, 74, 23, .26);
+
+  --rm-report-doc-print-border: #d6cbb0;
+  --rm-report-doc-print-ink: #1c1912;
+  --rm-report-doc-print-muted: #55503f;
+  --rm-report-doc-print-muted-2: #6b6455;
+  --rm-report-doc-print-track-bg: #f0eadd;
+  --rm-report-doc-print-accent: #7a4a17;
+  --rm-report-doc-print-accent-dark: #4a2c0d;
+  --rm-report-doc-print-accent-bg: #f7ecd9;
+  --rm-report-doc-print-pill-bg: #efdfc0;
+}
+}

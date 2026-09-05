@@ -26,10 +26,12 @@ def _write_theme(tmp_path: Path, name: str, body: str) -> Path:
     return f
 
 
-def test_theme_discovery_is_empty_today():
-    """src/themes/ carries no concept yet — T153.04's job. The mechanism
-    must not require any file to exist to be buildable."""
-    assert build_mod.discover_theme_files() == []
+def test_theme_discovery_finds_the_four_t153_04_concepts_sorted():
+    """T153.04 populated src/themes/ with four concepts. Discovery order is
+    the sort order of their filenames, which is also their appended order in
+    the compiled CSS (see docs/theme_override_contract.md)."""
+    found = build_mod.discover_theme_files()
+    assert [p.stem for p in found] == ["dense-tool", "editorial", "muted-minimal", "radical"]
 
 
 def test_theme_discovery_is_sorted_and_deterministic(tmp_path, monkeypatch):
@@ -49,15 +51,19 @@ def test_discovery_of_a_missing_directory_returns_empty_list(tmp_path):
 
 
 def test_zero_themes_leaves_build_output_unchanged_by_the_mechanism(tmp_path, monkeypatch):
-    """Isolates the discovery/append machinery from the D9 content fix:
-    pointing THEMES_DIR at an empty directory must produce byte-identical
-    output to pointing it at the real (also currently empty) directory —
-    proving the mechanism itself, independent of any source-file edit, is a
-    genuine no-op with zero theme files."""
+    """Isolates the discovery/append machinery from the D9 content fix and
+    from T153.04's now-populated src/themes/: pointing THEMES_DIR at two
+    different, both-empty directories must produce byte-identical output --
+    proving the mechanism itself, independent of how many concept files
+    happen to exist today, is a genuine no-op with zero theme files. (Before
+    T153.04 this compared the real directory to an empty one; that stopped
+    isolating the mechanism the moment the real directory stopped being
+    empty, which is exactly what this task did.)"""
+    monkeypatch.setattr(build_mod, "THEMES_DIR", tmp_path / "empty_themes_a")
     baseline = build_mod.build()["css"]
-    monkeypatch.setattr(build_mod, "THEMES_DIR", tmp_path / "empty_themes")
-    with_empty_override = build_mod.build()["css"]
-    assert with_empty_override == baseline
+    monkeypatch.setattr(build_mod, "THEMES_DIR", tmp_path / "empty_themes_b")
+    with_other_empty_dir = build_mod.build()["css"]
+    assert with_other_empty_dir == baseline
 
 
 def test_out_of_contract_property_fails_the_build(tmp_path, monkeypatch):

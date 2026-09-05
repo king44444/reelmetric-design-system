@@ -1,0 +1,96 @@
+/* T153.04 -- Concept 4/4: dense-tool.
+   Brief: compact, tabular, high information density -- the direction that
+   suits someone comparing twelve scripts rather than reading one (phase 153
+   D3: tokens only).
+
+   Same structural limit named in radical.css's comment applies here: report.css
+   hardcodes the report/document family's own spacing and type scale, so this
+   concept's "density" reaches the app-chrome and landing surfaces (via
+   --rm-text-*/--rm-radius/--rm-section/--rm-container, which components.css
+   does consume) and the report's *palette* (flatter, cooler, more utilitarian
+   than the seeded monochrome), not the report's internal layout. A future
+   task that tokenizes report.css's own spacing is what would let a "dense"
+   concept actually tighten the report's own tables and cards.
+
+   --rm-muted and --rm-gold below are light tints, not dark ones -- see
+   muted-minimal.css's header comment for why (report.css's only use of
+   either sits on the permanently-dark document panel, so even a light
+   concept needs a light value there; components.css's separate, conflicting
+   use of --rm-gold as light-landing text is a carried finding, not fixed
+   here). --rm-red keeps its own distinct hue -- a real error/negative-state
+   signal a comparison tool needs, unlike muted-minimal's one-hue budget. */
+@layer overrides {
+[data-theme="dense-tool"] {
+  color-scheme: light;
+
+  --rm-ink: #14171c;
+  --rm-ink-2: #1c2027;
+  --rm-panel: #1a1d23;
+  --rm-panel-2: #22262d;
+  --rm-cream: #ffffff;
+  --rm-paper: #f4f6f8;
+  --rm-muted: #aeb8c2;
+  --rm-muted-2: #3f4750;
+  --rm-line: rgba(20, 23, 28, 0.14);
+  --rm-line-strong: rgba(20, 23, 28, 0.26);
+
+  --rm-gold: #7ec2ea;
+  --rm-gold-2: #a9d8f0;
+  --rm-red: #d9827c;
+  --rm-teal: #7ec2ea;
+  --rm-blue: #7ec2ea;
+
+  --rm-charcoal: #1f242b;
+  --rm-charcoal-hover: #2a3038;
+  --rm-slate: #4c5560;
+  --rm-light-gray: #e2e7eb;
+  --rm-black: #14171c;
+
+  --rm-text-xs: 0.72rem;
+  --rm-text-sm: 0.84rem;
+  --rm-text-md: 0.92rem;
+  --rm-text-lg: 1.05rem;
+  --rm-text-xl: 1.25rem;
+  --rm-text-2xl: 1.7rem;
+  --rm-text-3xl: 2.4rem;
+  --rm-text-4xl: 3.6rem;
+
+  --rm-page-pad: 1rem;
+  --rm-container: 1320px;
+  --rm-section: 3.25rem;
+  --rm-section-tight: 2rem;
+  --rm-radius: 6px;
+  --rm-radius-sm: 4px;
+  --rm-shadow: 0 10px 28px rgba(15, 20, 25, .18);
+  --rm-shadow-soft: 0 6px 16px rgba(15, 20, 25, .12);
+
+  --rm-report-muted: #545d68;
+  --rm-report-body: #2b3038;
+  --rm-report-border: #d7dde2;
+  --rm-report-border-soft: #dee3e7;
+  --rm-report-border-chip: #cfd6db;
+  --rm-report-border-card: #dbe1e5;
+  --rm-report-border-hair: #e6eaed;
+
+  --rm-report-doc-panel-bg: rgba(20, 23, 28, .92);
+  --rm-report-doc-shadow: 0 16px 40px rgba(15, 20, 25, .34);
+  --rm-report-doc-track-bg: rgba(255, 255, 255, .08);
+  --rm-report-doc-field-bg: rgba(255, 255, 255, .03);
+  --rm-report-doc-hair: rgba(255, 255, 255, .05);
+  --rm-report-doc-accent-2: #7ec2ea;
+  --rm-report-doc-accent-bg-soft: rgba(15, 94, 140, .12);
+  --rm-report-doc-accent-border: rgba(15, 94, 140, .34);
+  --rm-report-doc-accent-bg: rgba(15, 94, 140, .2);
+  --rm-report-doc-accent-bg-hover: rgba(15, 94, 140, .28);
+
+  --rm-report-doc-print-border: #ccc;
+  --rm-report-doc-print-ink: #14171c;
+  --rm-report-doc-print-muted: #454d56;
+  --rm-report-doc-print-muted-2: #5c6672;
+  --rm-report-doc-print-track-bg: #eef1f3;
+  --rm-report-doc-print-accent: #0f5e8c;
+  --rm-report-doc-print-accent-dark: #093a57;
+  --rm-report-doc-print-accent-bg: #e8f1f7;
+  --rm-report-doc-print-pill-bg: #d7e7f0;
+}
+}
