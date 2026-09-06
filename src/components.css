@@ -1,13 +1,19 @@
 /* Component classes (buttons, nav, hero, cards, tables, etc.) plus
    responsive/reduced-motion utility rules. ADR-0054 SS2.2. */
 @layer components {
-/* T153.09: reelmetric-script-web's <main class="container"> is a *Bootstrap*
-   container (base.html, retained for its row/col-*/btn-* utilities) --
+/* T153.09: reelmetric-script-web's <main class="container"> is a Bootstrap
+   container (base.html, retained for its row / col-N / btn-N utilities) --
    its 1140px max-width and side padding clip every full-bleed .rm-section
    nested inside it. Nothing here competed for `main.container` before, so
    layering Bootstrap alone doesn't fix this either; this is the competing
    rule. Scoped to the exact class combo base.html uses, so it cannot touch
-   any other `.container`/`.row`/`.col-*` usage inside a page's own content. */
+   any other .container, .row, or .col-N usage inside a page's own content.
+   (A CSS comment ends at its first asterisk-then-slash pair. An earlier
+   draft of this comment wrote two Bootstrap class stems back to back with
+   only that pair between them and, unnoticed by anything short of an
+   actual browser parse, closed itself early -- which silently dropped the
+   whole rule below with no build error. See this task's own Notes for how
+   that was found.) */
 main.container {
   max-width: none;
   padding-right: 0;
