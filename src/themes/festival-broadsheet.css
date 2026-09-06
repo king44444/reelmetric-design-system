@@ -46,18 +46,29 @@
   --rm-panel-2: #26221b;
   --rm-cream: #fff7e8;
   --rm-paper: #f7ecd5;
-  --rm-muted: #8a7f68;
+  /* Light tint, not a dark one -- report.css's only use of --rm-muted sits
+     on the permanently-dark document panel (.dp-section-sub/.dp-field-label/
+     .dp-caveat p), so even this light-surface concept needs a light value
+     there. Same reasoning editorial.css's own header comment already names
+     for this exact token. Verified live via check_contrast.py, not
+     reasoned from source: a mid-tone tan measured 3.26:1 against the
+     composited panel background (fails 4.5:1); this measured 8.01:1. */
+  --rm-muted: #d8cbab;
   --rm-muted-2: #55503f;
   --rm-line: rgba(36, 33, 28, 0.14);
   --rm-line-strong: rgba(36, 33, 28, 0.28);
 
   /* Legacy accent-token names -- reused for the two ADR-0055 accents rather
      than left monochrome (D3 allows any value for an already-declared
-     token). Gold/teal/blue all carry the primary accent; red carries the
-     secondary, matching how muted-minimal/editorial already collapse this
-     five-name legacy set down to whatever the concept's real accent count
-     is. */
-  --rm-gold: #245c9c;
+     token). --rm-gold specifically renders as text on the document panel's
+     own translucent accent-tinted background (.dp-market-pill,
+     .dp-caveat-title) -- the same dark-panel legibility problem as
+     --rm-muted above, so it is a light sky-blue tint of the signed accent,
+     not the accent's own mid-tone value (measured 1.72:1 with the mid-tone,
+     7.08:1 with this tint). --rm-teal/--rm-blue carry the primary accent's
+     mid-tone (used on light surfaces only, per components.css); --rm-red/
+     --rm-gold-2 carry the secondary. */
+  --rm-gold: #9dc9ee;
   --rm-gold-2: #c05a3b;
   --rm-red: #c05a3b;
   --rm-teal: #245c9c;
@@ -85,7 +96,9 @@
   --rm-shadow: 0 20px 50px rgba(36, 33, 28, .2);
   --rm-shadow-soft: 0 12px 28px rgba(36, 33, 28, .14);
 
-  --rm-report-muted: #7a7058;
+  /* Darker than a first pass -- #7a7058 measured 4.18:1 on --rm-paper,
+     just under WCAG AA; this measures 5.17:1, verified live. */
+  --rm-report-muted: #6b6248;
   --rm-report-body: #423d33;
   --rm-report-border: #e6d9bd;
   --rm-report-border-soft: #ecdfc4;
@@ -98,7 +111,7 @@
   --rm-report-doc-track-bg: rgba(255, 247, 232, .08);
   --rm-report-doc-field-bg: rgba(255, 247, 232, .035);
   --rm-report-doc-hair: rgba(255, 247, 232, .06);
-  --rm-report-doc-accent-2: #245c9c;
+  --rm-report-doc-accent-2: #9dc9ee;
   --rm-report-doc-accent-bg-soft: rgba(36, 92, 156, .1);
   --rm-report-doc-accent-border: rgba(36, 92, 156, .32);
   --rm-report-doc-accent-bg: rgba(36, 92, 156, .18);
