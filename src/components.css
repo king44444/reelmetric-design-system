@@ -73,7 +73,18 @@ main.container {
   color: var(--rm-cream);
 }
 
-/* Light-background variant: dark ink nav text for pages without a dark hero */
+/* Light-background variant: dark ink nav text for pages without a dark hero
+   (T153.10) -- and, for the same reason, no hero to float over. The base
+   .rm-topbar is position:absolute so it can overlay landing's full-bleed
+   dark hero without pushing that hero's own content down; a --light page
+   has no hero, so the absolute positioning just paints the header over
+   whatever is first in the page instead -- on script-web's report page,
+   the report's own document header. Reserving real space in normal flow
+   is what a header with nothing to float over needs. */
+.rm-topbar--light {
+  position: static;
+}
+
 .rm-topbar--light .rm-brand {
   color: var(--rm-ink);
 }
