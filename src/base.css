@@ -87,6 +87,17 @@ body.rm-theme-page {
   margin-top: 0;
 }
 
+/* T153.09: Bootstrap declares `code { color: #d63384 }`; nothing in this
+   design system competed for that selector, so layering Bootstrap alone
+   (base.html) doesn't fix it -- this is the competing rule that does. */
+.rm-theme-page code,
+.rm-theme-page kbd,
+.rm-theme-page samp {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  color: inherit;
+}
+
 .rm-theme-page h1,
 .rm-theme-page h2,
 .rm-theme-page h3 {
