@@ -164,5 +164,74 @@
   --rm-report-lsr-shadow-glow: rgba(255, 157, 0, 0.2);
   --rm-report-lsr-note-bg: rgba(255, 157, 0, 0.08);
   --rm-report-lsr-card-bg: rgba(255, 255, 255, 0.72);
+
+  /* T153.05 -- report_user.html (.ru-*) structural/typography roles this
+     task adds so a document theme (Festival Broadsheet) can shift rhythm,
+     density and heading voice without a template edit. Every default below
+     is a value-for-value transcription of the literal report.css already
+     hardcoded at the corresponding declaration site (D7 -- the no-theme
+     build stays byte-identical); this section only *names* those literals
+     as overridable roles, it does not introduce a redesign. Sites not
+     listed here (money-shot, char-card, angle-card, comp-card interior
+     type, pill sizing) are named as an explicit gap in T153.05's
+     completion evidence rather than silently tokenized or silently
+     skipped -- Festival Broadsheet's "editorial rhythm" claim rests on the
+     roles below (headings, body prose, section container, tables), not on
+     every micro-component. */
+  --rm-report-font-heading: var(--rm-font-serif);
+  --rm-report-font-ui: var(--rm-font-sans);
+
+  --rm-report-text-h1: clamp(1.9rem, 3.4vw, 3rem);   /* .ru-hero-copy h1 */
+  --rm-report-text-h2: 1.14rem;                      /* .ru-section h2 */
+  --rm-report-leading-h1: 1.05;                      /* .ru-hero-copy h1 */
+  --rm-report-leading-lead: 1.8;                     /* .ru-hero-lead */
+  --rm-report-leading-sub: 1.65;                     /* .ru-section-sub */
+  --rm-report-leading-card: 1.75;                    /* .ru-card p, .ru-pending p */
+
+  --rm-report-section-radius: 10px;                  /* .ru-section */
+  --rm-report-section-border: 1px solid var(--rm-report-border-soft);
+  --rm-report-section-bg: var(--rm-cream);
+  /* Empty by default -- a theme sets this to render a full-width rule
+     between sections instead of (or in addition to) the bordered-card
+     look above; report.css applies it as border-top on .ru-section. */
+  --rm-report-section-divider: none;
+
+  --rm-report-pill-radius: 999px;                    /* .ru-pill, .ru-chip, .ru-eyebrow, .ru-mini-pill */
+
+  --rm-report-table-border: 1px solid var(--rm-report-border-hair); /* .ru-arc-table/.ru-focus-table td */
+  --rm-report-table-cell-padding: .5rem .6rem;
+
+  /* T153.05 -- accent roles. report.css had no third color beyond black/
+     charcoal/paper (T151.10 monochrome); these two default to the existing
+     monochrome values (D7) and give a document theme's "accent"/"secondary"
+     palette slots (ADR-0055 SS2.1) somewhere specific to land -- mini-pill
+     and pill-accent fills, the eyebrow border, and the report's headline
+     numbers (stat value, comp title, beat score) for --rm-report-accent;
+     the comp-score badge and the money-shot marker for
+     --rm-report-accent-2. Not every black/charcoal use in report.css was
+     re-routed through these two -- ordinary body headings (h1/h2, arc-idx,
+     char-name) stay on --rm-black/--rm-charcoal on purpose, so a themed
+     accent reads as emphasis rather than recoloring the whole page. */
+  --rm-report-accent: var(--rm-black);
+  --rm-report-accent-2: var(--rm-charcoal);
+
+  /* T153.05 / ADR-0055 SS2.2 -- Festival Jewel, the fixed fingerprint color
+     contract. These eight tokens are the ONLY themeable-looking values in
+     this file a theme file may NOT override -- build/build.py's contract
+     validator hard-rejects any `--rm-fingerprint-*` declaration inside a
+     src/themes/*.css file regardless of this allowlist mechanism's normal
+     "any declared --rm-* token" rule, and
+     tests/test_t153_05_fingerprint_contract.py enforces both that block and
+     that these hex values never appear rendered outside a `.rm-fingerprint`
+     -scoped rule. Genre order is FREEZE-ALPHA-002's canonical eight; do not
+     reassign a color to a different genre without a new ADR. */
+  --rm-fingerprint-drama: #355070;
+  --rm-fingerprint-comedy: #e9c46a;
+  --rm-fingerprint-action: #e76f51;
+  --rm-fingerprint-thriller-suspense: #6d597a;
+  --rm-fingerprint-horror: #5a2333;
+  --rm-fingerprint-romance: #b56576;
+  --rm-fingerprint-sci-fi-fantasy: #2d8c8c;
+  --rm-fingerprint-family-inspirational: #f4a261;
 }
 }

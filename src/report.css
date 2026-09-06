@@ -58,46 +58,56 @@
 
 .ru-hero, .rm-report-hero { display: grid; grid-template-columns: 1.5fr .7fr; gap: 1rem; align-items: stretch; margin-bottom: 1rem; }
 .ru-hero-copy, .ru-hero-side, .ru-section, .ru-card, .rm-report-section {
-  border: 1px solid var(--rm-report-border-soft); background: var(--rm-cream); box-shadow: none;
+  border: var(--rm-report-section-border); background: var(--rm-report-section-bg); box-shadow: none;
 }
-.ru-hero-copy { border-radius: 10px; padding: 2rem; position: relative; }
+.ru-hero-copy { border-radius: var(--rm-report-section-radius); padding: 2rem; position: relative; font-family: var(--rm-report-font-ui); }
 .ru-eyebrow {
   display: inline-flex; align-items: center; gap: .5rem; padding: .38rem .7rem;
-  border-radius: 999px; border: 1px solid var(--rm-charcoal);
-  background: var(--rm-cream); color: var(--rm-charcoal);
+  border-radius: var(--rm-report-pill-radius); border: 1px solid var(--rm-report-accent);
+  background: var(--rm-cream); color: var(--rm-charcoal); font-family: var(--rm-report-font-ui);
   font-size: .76rem; font-weight: 700; text-transform: uppercase; letter-spacing: .18em; margin-bottom: .75rem;
 }
-.ru-hero-copy h1 { margin: 0 0 .6rem; font-size: clamp(1.9rem,3.4vw,3rem); line-height: 1.05; letter-spacing: -.02em; color: var(--rm-black); }
-.ru-hero-lead { color: var(--rm-report-body); font-size: 1rem; line-height: 1.8; margin: 0 0 1rem; max-width: 64ch; }
+.ru-hero-copy h1 {
+  margin: 0 0 .6rem; font-family: var(--rm-report-font-heading);
+  font-size: var(--rm-report-text-h1); line-height: var(--rm-report-leading-h1);
+  letter-spacing: -.02em; color: var(--rm-black);
+}
+.ru-hero-lead { color: var(--rm-report-body); font-size: 1rem; line-height: var(--rm-report-leading-lead); margin: 0 0 1rem; max-width: 64ch; }
 .ru-chip-row { display: flex; flex-wrap: wrap; gap: .55rem; }
 .ru-chip {
   display: inline-flex; align-items: center; gap: .35rem; padding: .42rem .72rem;
-  border-radius: 999px; border: 1px solid var(--rm-report-border-chip);
+  border-radius: var(--rm-report-pill-radius); border: 1px solid var(--rm-report-border-chip);
   background: var(--rm-paper); color: var(--rm-report-body); font-size: .84rem; font-weight: 700;
 }
 .ru-chip strong { color: var(--rm-black); }
 
-.ru-hero-side { border-radius: 10px; padding: 1.35rem; display: flex; flex-direction: column; gap: 1rem; }
+.ru-hero-side { border-radius: var(--rm-report-section-radius); padding: 1.35rem; display: flex; flex-direction: column; gap: 1rem; }
 .ru-mini-pill {
-  display: inline-flex; width: fit-content; padding: .4rem .7rem; border-radius: 999px;
-  background: var(--rm-black); color: var(--rm-cream); font-weight: 700; font-size: .82rem;
+  display: inline-flex; width: fit-content; padding: .4rem .7rem; border-radius: var(--rm-report-pill-radius);
+  background: var(--rm-report-accent); color: var(--rm-cream); font-weight: 700; font-size: .82rem;
 }
 .ru-mini-muted { color: var(--rm-report-muted); margin: 0; line-height: 1.7; font-size: .88rem; }
 
-.ru-section, .rm-report-section { border-radius: 10px; padding: 1.4rem; margin-top: 1rem; }
-.ru-section h2 { margin: 0 0 .9rem; font-size: 1.14rem; letter-spacing: -.01em; color: var(--rm-black); }
+.ru-section, .rm-report-section {
+  border-radius: var(--rm-report-section-radius); padding: 1.4rem; margin-top: 1rem;
+  border-top: var(--rm-report-section-divider);
+}
+.ru-section h2 {
+  margin: 0 0 .9rem; font-family: var(--rm-report-font-heading);
+  font-size: var(--rm-report-text-h2); letter-spacing: -.01em; color: var(--rm-black);
+}
 .ru-section-header { display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; flex-wrap: wrap; margin-bottom: 1rem; }
-.ru-section-sub { color: var(--rm-report-muted); line-height: 1.65; margin: .15rem 0 0; max-width: 72ch; font-size: .9rem; }
+.ru-section-sub { color: var(--rm-report-muted); line-height: var(--rm-report-leading-sub); margin: .15rem 0 0; max-width: 72ch; font-size: .9rem; }
 
 .ru-stat-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: .8rem; }
 .ru-stat, .rm-stat { border: 1px solid var(--rm-report-border-card); border-radius: 8px; background: var(--rm-paper); padding: 1rem; min-height: 100px; }
 .ru-stat-label { color: var(--rm-report-muted); text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; margin-bottom: .55rem; }
-.ru-stat-value { font-size: 1.5rem; font-weight: 800; line-height: 1.05; color: var(--rm-black); }
+.ru-stat-value { font-size: 1.5rem; font-weight: 800; line-height: 1.05; color: var(--rm-report-accent); }
 .ru-stat-hint { display: block; margin-top: .5rem; color: var(--rm-report-muted); font-size: .84rem; line-height: 1.45; }
 
 .ru-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .ru-card { border-radius: 8px; padding: 1rem; margin-bottom: .75rem; }
-.ru-card p { margin: 0; line-height: 1.75; color: var(--rm-report-body); font-size: .9rem; }
+.ru-card p { margin: 0; line-height: var(--rm-report-leading-card); color: var(--rm-report-body); font-size: .9rem; }
 .ru-card-label { color: var(--rm-report-muted); text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; margin-bottom: .55rem; }
 
 .ru-dialogue-line {
@@ -109,7 +119,7 @@
   display: flex; align-items: flex-start; gap: .4rem; padding: .3rem 0;
   border-bottom: 1px solid var(--rm-report-border-card);
 }
-.ru-money-shot-arrow { color: var(--rm-black); font-size: .78rem; flex-shrink: 0; margin-top: .1rem; }
+.ru-money-shot-arrow { color: var(--rm-report-accent-2); font-size: .78rem; flex-shrink: 0; margin-top: .1rem; }
 .ru-money-shot span { font-size: .82rem; color: var(--rm-charcoal); line-height: 1.5; }
 
 .ru-char-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: .55rem; }
@@ -135,18 +145,18 @@
 }
 .ru-beat-topline { display: flex; justify-content: space-between; gap: .5rem; align-items: center; margin-bottom: .35rem; }
 .ru-beat-index { font-size: .76rem; letter-spacing: .13em; text-transform: uppercase; color: var(--rm-black); font-weight: 800; }
-.ru-beat-score { font-size: .9rem; font-weight: 800; color: var(--rm-black); }
+.ru-beat-score { font-size: .9rem; font-weight: 800; color: var(--rm-report-accent); }
 .ru-beat-meta { color: var(--rm-report-muted); font-size: .82rem; margin-bottom: .4rem; }
 .ru-beat-headline { font-size: .93rem; line-height: 1.6; color: var(--rm-black); font-weight: 700; margin-bottom: .4rem; }
 .ru-beat-evidence { color: var(--rm-report-body); font-size: .84rem; line-height: 1.5; margin-bottom: .5rem; }
 .ru-pill {
   display: inline-flex; align-items: center; padding: .26rem .52rem;
-  border-radius: 999px; border: 1px solid var(--rm-report-border-chip); background: var(--rm-cream);
+  border-radius: var(--rm-report-pill-radius); border: 1px solid var(--rm-report-border-chip); background: var(--rm-cream);
   color: var(--rm-report-body); font-size: .71rem; font-weight: 700; margin-right: .3rem;
 }
 /* Phases are distinguished by their text label (Setup/Build/Escalate/Climax/Button),
    not by color -- all five render with the same neutral outline. */
-.ru-pill-accent { background: var(--rm-black); color: var(--rm-cream); border-color: var(--rm-black); }
+.ru-pill-accent { background: var(--rm-report-accent); color: var(--rm-cream); border-color: var(--rm-report-accent); }
 .ru-phase-setup, .ru-phase-build, .ru-phase-escalate, .ru-phase-climax, .ru-phase-button {
   background: var(--rm-cream); color: var(--rm-charcoal); border: 1px solid var(--rm-muted);
 }
@@ -154,8 +164,8 @@
 /* Arc compact grid */
 .ru-table-scroll { overflow-x: auto; }
 .ru-arc-table { width: 100%; border-collapse: collapse; font-size: .83rem; }
-.ru-arc-table th { color: var(--rm-report-muted); text-transform: uppercase; letter-spacing: .1em; font-size: .71rem; font-weight: 700; padding: .5rem .6rem; border-bottom: 1px solid var(--rm-report-border); text-align: left; }
-.ru-arc-table td { padding: .5rem .6rem; border-bottom: 1px solid var(--rm-report-border-hair); color: var(--rm-charcoal); vertical-align: top; }
+.ru-arc-table th { color: var(--rm-report-muted); text-transform: uppercase; letter-spacing: .1em; font-size: .71rem; font-weight: 700; padding: var(--rm-report-table-cell-padding); border-bottom: 1px solid var(--rm-report-border); text-align: left; }
+.ru-arc-table td { padding: var(--rm-report-table-cell-padding); border-bottom: var(--rm-report-table-border); color: var(--rm-charcoal); vertical-align: top; }
 .ru-arc-desc { min-width: 220px; white-space: normal; word-break: break-word; line-height: 1.5; }
 .ru-arc-table tr:last-child td { border-bottom: none; }
 .ru-arc-idx { font-weight: 800; color: var(--rm-black); font-size: .76rem; }
@@ -175,18 +185,44 @@
 /* Focus table */
 .ru-focus-table { width: 100%; border-collapse: collapse; font-size: .83rem; }
 .ru-focus-table th { color: var(--rm-report-muted); text-transform: uppercase; letter-spacing: .1em; font-size: .71rem; padding: .45rem .6rem; border-bottom: 1px solid var(--rm-report-border); text-align: left; }
-.ru-focus-table td { padding: .45rem .6rem; border-bottom: 1px solid var(--rm-report-border-hair); color: var(--rm-charcoal); }
+.ru-focus-table td { padding: .45rem .6rem; border-bottom: var(--rm-report-table-border); color: var(--rm-charcoal); }
 .ru-focus-table tr:last-child td { border-bottom: none; }
 
 /* Comparable films */
 .ru-comp-grid, .rm-comps-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: .85rem; }
 .ru-comp-card { border: 1px solid var(--rm-report-border-card); border-radius: 8px; background: var(--rm-paper); padding: 1rem; }
 .ru-comp-label { color: var(--rm-report-muted); text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; font-weight: 800; }
-.ru-comp-title { font-size: 1.5rem; font-weight: 800; margin-top: .45rem; color: var(--rm-black); }
+.ru-comp-title { font-size: 1.5rem; font-weight: 800; margin-top: .45rem; color: var(--rm-report-accent); }
 .ru-comp-sub { color: var(--rm-report-muted); font-size: .84rem; margin-top: .25rem; }
-.ru-comp-score { display: inline-flex; margin-top: .65rem; padding: .32rem .6rem; border-radius: 999px; border: 1px solid var(--rm-charcoal); color: var(--rm-charcoal); font-size: .78rem; font-weight: 800; }
+.ru-comp-score { display: inline-flex; margin-top: .65rem; padding: .32rem .6rem; border-radius: var(--rm-report-pill-radius); border: 1px solid var(--rm-report-accent-2); color: var(--rm-report-accent-2); font-size: .78rem; font-weight: 800; }
 .ru-comp-genre-mini { display: flex; align-items: flex-end; gap: 2px; height: 34px; margin-top: .7rem; }
 .ru-comp-genre-bar { flex: 1; background: var(--rm-charcoal); border-radius: 2px 2px 0 0; min-height: 2px; height: var(--rm-value, 2px); opacity: var(--rm-opacity, .85); }
+
+/* Fixed fingerprint color contract (ADR-0055 SS2.2, T153.05). `.rm-fingerprint`
+   wraps exactly the two genre-mix visuals report_user.html renders (the
+   Genre Distribution section's .ru-dist-fill bars and each comparable
+   film's .ru-comp-genre-bar mini-bars) via a per-instance
+   `--rm-fingerprint-color` custom property the template sets from one of
+   the eight fixed tokens below (never a literal hex, never a theme
+   override -- build/build.py's contract validator rejects any theme file
+   that sets a `--rm-fingerprint-*` token, and
+   tests/test_t153_05_fingerprint_contract.py asserts these eight hex
+   values never render outside this scope). The unscoped .ru-dist-fill /
+   .ru-comp-genre-bar rules above stay monochrome and keep serving the
+   audience-segment distribution rows in this file and in
+   decision_package.html / worksheet_public.html, which are not a
+   fingerprint and must not gain genre colors. */
+/* Gated on an ancestor actually carrying [data-theme] (any value), not bare
+   `.rm-fingerprint` -- Phase 153's whole safety margin (D2's abort clause)
+   rests on "every concept is a token file that renders nothing until
+   something sets data-theme" (AGENTS.md). The fingerprint contract is
+   theme-*independent* (it doesn't change *which* theme is active) but it
+   must not switch the still-live monochrome default report over to colored
+   bars before T153.06 actually sets data-theme -- that is a real visual
+   change to a production surface this phase has not been authorized to
+   ship yet. */
+[data-theme] .rm-fingerprint .ru-dist-fill { background: var(--rm-fingerprint-color, var(--rm-black)); }
+[data-theme] .rm-fingerprint .ru-comp-genre-bar { background: var(--rm-fingerprint-color, var(--rm-charcoal)); }
 
 /* Pending / not-ready state */
 .ru-pending { max-width: 560px; margin: 4rem auto; text-align: center; padding: 2.5rem; border: 1px solid var(--rm-report-border-soft); border-radius: 10px; background: var(--rm-cream); }

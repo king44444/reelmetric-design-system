@@ -1,0 +1,141 @@
+/* T153.05 -- Festival Broadsheet, the ADR-0055 SS2.1 winning document theme
+   (signed by Mike King and Cheryl King, 2026-09-05): "Producer briefing meets
+   festival program -- warm, literate, less SaaS."
+
+   Palette per ADR-0055: surface #fff7e8, text #24211c, accent #245c9c,
+   secondary #c05a3b. Typefaces: Newsreader for report titles/section heads,
+   Libre Franklin for tables/UI (loaded in reelmetric-script-web's base.html,
+   alongside the existing unconditional Inter link -- see that file's T153.05
+   comment). This concept touches the whole site's tokens, not only the
+   report family, following editorial.css's own precedent (the "producer
+   briefing" read is meant to carry through app chrome and landing too, not
+   stop at the report).
+
+   Everything outside the four named colors and two named typefaces below is
+   a derived value, not a specified one, and is called out here rather than
+   presented as part of the signed brief:
+     - --rm-paper, and every --rm-* tint/shade of the four named colors, are
+       this task's own interpretation of "warm, literate."
+     - The T153.05 report-structure tokens (section-radius/border/bg/divider,
+       pill-radius, table styling, type/leading scale) implement "editorial
+       rhythm, wider line height, full-width section dividers, fewer pills,
+       tables read like review ledgers" as concretely as the current token
+       contract allows: sections lose their card border/background/radius
+       entirely (a flowing document instead of boxed cards) and gain a
+       full-width top divider instead; pills flatten from a fully round
+       999px to a 4px tag radius; table rows get a slightly heavier,
+       visible-by-design rule instead of a near-invisible hairline. This is
+       a genuinely different structural read from the other five themes on
+       file and reviewers should weigh in on it specifically, not just the
+       color choice.
+     - Money-shot/char-card/angle-card/comp-card interior type sizing and
+       the .ru-pending empty state stay on their base (T153.03-era) literal
+       values -- named in T153.05's completion evidence as not tokenized in
+       this pass, same as report.css's own header comment already names for
+       the type-scale/spacing system generally. */
+@layer overrides {
+[data-theme="festival-broadsheet"] {
+  color-scheme: light;
+
+  --rm-font-sans: "Libre Franklin", Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --rm-font-serif: "Newsreader", Georgia, "Times New Roman", serif;
+
+  --rm-ink: #24211c;
+  --rm-ink-2: #2e2a23;
+  --rm-panel: #1d1a15;
+  --rm-panel-2: #26221b;
+  --rm-cream: #fff7e8;
+  --rm-paper: #f7ecd5;
+  --rm-muted: #8a7f68;
+  --rm-muted-2: #55503f;
+  --rm-line: rgba(36, 33, 28, 0.14);
+  --rm-line-strong: rgba(36, 33, 28, 0.28);
+
+  /* Legacy accent-token names -- reused for the two ADR-0055 accents rather
+     than left monochrome (D3 allows any value for an already-declared
+     token). Gold/teal/blue all carry the primary accent; red carries the
+     secondary, matching how muted-minimal/editorial already collapse this
+     five-name legacy set down to whatever the concept's real accent count
+     is. */
+  --rm-gold: #245c9c;
+  --rm-gold-2: #c05a3b;
+  --rm-red: #c05a3b;
+  --rm-teal: #245c9c;
+  --rm-blue: #245c9c;
+
+  --rm-charcoal: #34302a;
+  --rm-charcoal-hover: #423d33;
+  --rm-slate: #6b6252;
+  --rm-light-gray: #ece0c8;
+  --rm-black: #1a1712;
+
+  --rm-text-xs: 0.8rem;
+  --rm-text-sm: 0.95rem;
+  --rm-text-md: 1.05rem;
+  --rm-text-lg: 1.2rem;
+  --rm-text-xl: 1.5rem;
+  --rm-text-2xl: 2.05rem;
+  --rm-text-3xl: 3.05rem;
+  --rm-text-4xl: 4.65rem;
+
+  --rm-section: 6.5rem;
+  --rm-section-tight: 4.25rem;
+  --rm-radius: 4px;
+  --rm-radius-sm: 3px;
+  --rm-shadow: 0 20px 50px rgba(36, 33, 28, .2);
+  --rm-shadow-soft: 0 12px 28px rgba(36, 33, 28, .14);
+
+  --rm-report-muted: #7a7058;
+  --rm-report-body: #423d33;
+  --rm-report-border: #e6d9bd;
+  --rm-report-border-soft: #ecdfc4;
+  --rm-report-border-chip: #e2d4b6;
+  --rm-report-border-card: #ecdfc4;
+  --rm-report-border-hair: #f2e8d2;
+
+  --rm-report-doc-panel-bg: rgba(36, 33, 28, .92);
+  --rm-report-doc-shadow: 0 24px 60px rgba(36, 33, 28, .32);
+  --rm-report-doc-track-bg: rgba(255, 247, 232, .08);
+  --rm-report-doc-field-bg: rgba(255, 247, 232, .035);
+  --rm-report-doc-hair: rgba(255, 247, 232, .06);
+  --rm-report-doc-accent-2: #245c9c;
+  --rm-report-doc-accent-bg-soft: rgba(36, 92, 156, .1);
+  --rm-report-doc-accent-border: rgba(36, 92, 156, .32);
+  --rm-report-doc-accent-bg: rgba(36, 92, 156, .18);
+  --rm-report-doc-accent-bg-hover: rgba(36, 92, 156, .26);
+
+  --rm-report-doc-print-border: #ddd0ac;
+  --rm-report-doc-print-ink: #24211c;
+  --rm-report-doc-print-muted: #5c5546;
+  --rm-report-doc-print-muted-2: #6b6455;
+  --rm-report-doc-print-track-bg: #f2e8d2;
+  --rm-report-doc-print-accent: #245c9c;
+  --rm-report-doc-print-accent-dark: #163a63;
+  --rm-report-doc-print-accent-bg: #eaf1f8;
+  --rm-report-doc-print-pill-bg: #dce9f3;
+
+  /* T153.05 report structure -- see this file's header comment. */
+  --rm-report-font-heading: var(--rm-font-serif);
+  --rm-report-font-ui: var(--rm-font-sans);
+
+  --rm-report-text-h1: clamp(2.1rem, 3.6vw, 3.4rem);
+  --rm-report-text-h2: 1.28rem;
+  --rm-report-leading-h1: 1.1;
+  --rm-report-leading-lead: 1.9;
+  --rm-report-leading-sub: 1.8;
+  --rm-report-leading-card: 1.85;
+
+  --rm-report-section-radius: 0px;
+  --rm-report-section-border: none;
+  --rm-report-section-bg: transparent;
+  --rm-report-section-divider: 1px solid var(--rm-report-border);
+
+  --rm-report-pill-radius: 4px;
+
+  --rm-report-table-border: 1px solid var(--rm-report-border);
+  --rm-report-table-cell-padding: .65rem .75rem;
+
+  --rm-report-accent: #245c9c;
+  --rm-report-accent-2: #c05a3b;
+}
+}

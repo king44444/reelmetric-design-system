@@ -26,12 +26,15 @@ def _write_theme(tmp_path: Path, name: str, body: str) -> Path:
     return f
 
 
-def test_theme_discovery_finds_the_four_t153_04_concepts_sorted():
-    """T153.04 populated src/themes/ with four concepts. Discovery order is
-    the sort order of their filenames, which is also their appended order in
-    the compiled CSS (see docs/theme_override_contract.md)."""
+def test_theme_discovery_finds_the_committed_concepts_sorted():
+    """T153.04 populated src/themes/ with four concepts; T153.05 added a
+    fifth (festival-broadsheet, ADR-0055's winning direction). Discovery
+    order is the sort order of their filenames, which is also their
+    appended order in the compiled CSS (see docs/theme_override_contract.md)."""
     found = build_mod.discover_theme_files()
-    assert [p.stem for p in found] == ["dense-tool", "editorial", "muted-minimal", "radical"]
+    assert [p.stem for p in found] == [
+        "dense-tool", "editorial", "festival-broadsheet", "muted-minimal", "radical",
+    ]
 
 
 def test_theme_discovery_is_sorted_and_deterministic(tmp_path, monkeypatch):
