@@ -172,6 +172,13 @@ main.container {
   display: grid;
   min-height: 780px;
   overflow: hidden;
+  /* T153.08: like .rm-section--ink below, set a light color here so any
+     bare heading inside inherits it (base.css's .rm-theme-page h1/h2/h3
+     is color:inherit). Before T152.04 moved the page base from dark to
+     light, this was unnecessary -- the page's own dark foreground already
+     applied. .rm-hero .rm-lead already sets its own explicit light color
+     and is unaffected; this is what a bare <h1> was missing. */
+  color: var(--rm-cream);
   background:
     linear-gradient(90deg, rgba(9, 11, 15, 0.92), rgba(9, 11, 15, 0.66) 48%, rgba(9, 11, 15, 0.2)),
     linear-gradient(180deg, rgba(9, 11, 15, 0.2), rgba(9, 11, 15, 0.94)),
