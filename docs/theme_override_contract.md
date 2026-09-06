@@ -43,6 +43,18 @@ declaration, which this task leaves unchanged).
    naming the missing token, not resolved by widening this list or by
    editing a consuming template.
 
+## The one non-overridable exception: the fingerprint color contract
+
+`--rm-fingerprint-*` (eight tokens, one per canonical genre — see `tokens.css`'s
+own T153.05 comment) are declared `--rm-*` custom properties, so rule 1 above
+would otherwise admit them. They are excluded by name: ADR-0055 SS2.2 fixes
+the genre-fingerprint palette as a single, non-themeable visual contract
+("does not change when a reviewer switches among the six design directions"),
+so `build.py`'s `FORBIDDEN_TOKEN_PREFIX` rejects any theme file that sets one,
+regardless of the normal allowlist. `tests/test_t153_05_fingerprint_contract.py`
+enforces both this build-time rejection and that the eight hex values never
+render outside the `.rm-fingerprint`-scoped rules in `report.css`.
+
 ## Enforcement
 
 `build/build.py`'s `validate_theme_file` parses every declaration inside each

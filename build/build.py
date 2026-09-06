@@ -66,6 +66,15 @@ SOURCE_FILES = [
 # concept that flips the page dark needs to be able to say so.
 ALLOWED_NATIVE_PROPERTIES = frozenset({"color-scheme"})
 
+# T153.05 / ADR-0055 SS2.2 -- the fixed fingerprint color contract. These
+# eight tokens ARE declared --rm-* custom properties in tokens.css (so the
+# normal allowlist would admit them), but the briefing that ADR-0055 signs
+# against is explicit that the fingerprint mapping "does not change when a
+# reviewer switches among the six design directions" and "theme files may
+# not override any --rm-fingerprint-* token." A theme file is therefore
+# rejected for touching one of these regardless of ALLOWED_TOKEN_NAMES.
+FORBIDDEN_TOKEN_PREFIX = "--rm-fingerprint-"
+
 _TOKEN_DECL_RE = re.compile(r"(--rm-[a-z0-9-]+)\s*:")
 _THEME_RULE_RE = re.compile(r'\[data-theme="[^"]+"\]\s*\{([^}]*)\}', re.DOTALL)
 _DECL_RE = re.compile(r"([a-zA-Z0-9-]+)\s*:")
@@ -122,7 +131,7 @@ def validate_theme_file(path: Path, text: str, allowed_tokens: set[str]) -> None
         for decl_match in _DECL_RE.finditer(body):
             prop = decl_match.group(1)
             if prop.startswith("--"):
-                if prop not in allowed_tokens:
+                if prop.startswith(FORBIDDEN_TOKEN_PREFIX) or prop not in allowed_tokens:
                     offenders.append(prop)
             elif prop not in ALLOWED_NATIVE_PROPERTIES:
                 offenders.append(prop)
@@ -136,7 +145,8 @@ def validate_theme_file(path: Path, text: str, allowed_tokens: set[str]) -> None
             f"{_display_path(path)} sets propert{'y' if len(offenders) == 1 else 'ies'} "
             f"outside the override contract: {sorted(set(offenders))} — a concept may only "
             "override an existing --rm-* token declared in tokens.css, or color-scheme "
-            "(see docs/theme_override_contract.md)"
+            "(see docs/theme_override_contract.md). --rm-fingerprint-* tokens are declared "
+            "but never themeable (ADR-0055 SS2.2's fixed fingerprint color contract)."
         )
 
 
