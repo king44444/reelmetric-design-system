@@ -88,6 +88,20 @@ def test_out_of_contract_native_property_fails_the_build(tmp_path, monkeypatch):
         build_mod.build()
 
 
+def test_a_comment_containing_a_ratio_is_not_read_as_a_bogus_declaration(tmp_path, monkeypatch):
+    """T153.05 regression: an explanatory comment like `measured 8.01:1` or
+    `note: see docs` inside a [data-theme] block was, before this fix,
+    misread by the plain `name:` declaration regex as bogus properties
+    (`01`, `note`) and failed the build on a perfectly in-contract file."""
+    _write_theme(
+        tmp_path, "z",
+        "/* darker than a first pass -- measured 8.01:1, see docs/foo.md */\n"
+        "--rm-ink: #000; /* note: this is fine */",
+    )
+    monkeypatch.setattr(build_mod, "THEMES_DIR", tmp_path / "themes")
+    build_mod.build()  # must not raise
+
+
 def test_in_contract_theme_file_builds_and_is_included(tmp_path, monkeypatch):
     """An existing --rm-* token plus the one allowed native property
     (color-scheme) builds cleanly and its content reaches the output."""

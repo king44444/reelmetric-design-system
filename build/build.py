@@ -78,6 +78,7 @@ FORBIDDEN_TOKEN_PREFIX = "--rm-fingerprint-"
 _TOKEN_DECL_RE = re.compile(r"(--rm-[a-z0-9-]+)\s*:")
 _THEME_RULE_RE = re.compile(r'\[data-theme="[^"]+"\]\s*\{([^}]*)\}', re.DOTALL)
 _DECL_RE = re.compile(r"([a-zA-Z0-9-]+)\s*:")
+_CSS_COMMENT_RE = re.compile(r"/\*.*?\*/", re.DOTALL)
 
 
 class ThemeContractViolation(Exception):
@@ -127,7 +128,12 @@ def validate_theme_file(path: Path, text: str, allowed_tokens: set[str]) -> None
     found_a_rule = False
     for rule_match in _THEME_RULE_RE.finditer(text):
         found_a_rule = True
-        body = rule_match.group(1)
+        # Strip comments before scanning declarations -- an explanatory
+        # comment containing a colon (a measured ratio like "8.01:1", a
+        # URL, a "note:") would otherwise be misread as a bogus property
+        # name/value pair by the plain `name:` regex below. Found live
+        # while authoring festival-broadsheet.css's own rationale comments.
+        body = _CSS_COMMENT_RE.sub("", rule_match.group(1))
         for decl_match in _DECL_RE.finditer(body):
             prop = decl_match.group(1)
             if prop.startswith("--"):
