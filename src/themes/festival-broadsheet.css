@@ -88,6 +88,8 @@
   --rm-radius-sm: 3px;
   --rm-shadow: none;
   --rm-shadow-soft: none;
+  --rm-page-bg: #fff7e8;
+  --rm-page-noise-opacity: 0;
 
   --rm-brand-mark-color: #fffdf7;
   --rm-brand-mark-bg: #245c9c;
@@ -139,6 +141,18 @@
   --rm-landing-font-sans: var(--rm-font-sans);
   --rm-landing-font-serif: var(--rm-font-serif);
   --rm-landing-font-wordmark: var(--rm-font-serif);
+  --rm-landing-wordmark-size: clamp(4rem, 11vw, 13rem);
+  --rm-landing-wordmark-line-height: .88;
+  --rm-landing-wordmark-letter-spacing: 0em;
+  --rm-landing-wordmark-max-width: calc(100vw - clamp(2rem, 4vw, 4rem));
+  --rm-landing-wordmark-transform: none;
+  --rm-landing-wordmark-mobile-size: clamp(3rem, 13vw, 5.8rem);
+  --rm-landing-wordmark-mobile-max-width: calc(100vw - 1.5rem);
+  --rm-landing-wordmark-mobile-transform: none;
+  --rm-hero-bg: #1d1a15;
+  --rm-hero-rule-bg: none;
+  --rm-hero-rule-opacity: 0;
+  --rm-hero-fade-bg: none;
 
   /* Darker than a first pass -- #7a7058 measured 4.18:1 on --rm-paper,
      just under WCAG AA; this measures 5.17:1, verified live. */
