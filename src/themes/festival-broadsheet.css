@@ -89,8 +89,8 @@
   --rm-text-3xl: 3.05rem;
   --rm-text-4xl: 4.65rem;
 
-  --rm-section: 6.5rem;
-  --rm-section-tight: 4.25rem;
+  --rm-section: 4rem;
+  --rm-section-tight: 3rem;
   --rm-radius: 4px;
   --rm-radius-sm: 3px;
   --rm-shadow: 0 20px 50px rgba(36, 33, 28, .2);

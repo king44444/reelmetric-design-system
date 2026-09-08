@@ -33,3 +33,10 @@ def test_landing_hero_lives_in_components_layer_not_a_new_one():
             f".{cls} must live inside @layer components, not a new layer "
             "(ADR-0054 SS2.2 fixes the layer set)"
         )
+
+
+def test_shared_hero_does_not_force_a_tall_blank_lead_in():
+    css = build_mod.build()["css"]
+    hero_block = css.split(".rm-hero {", 1)[1].split("\n}", 1)[0]
+    assert "min-height: 560px;" in hero_block
+    assert "min-height: 780px;" not in hero_block

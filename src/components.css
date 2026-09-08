@@ -170,7 +170,7 @@ main.container {
 .rm-hero {
   position: relative;
   display: grid;
-  min-height: 780px;
+  min-height: 560px;
   overflow: hidden;
   /* T153.08: like .rm-section--ink below, set a light color here so any
      bare heading inside inherits it (base.css's .rm-theme-page h1/h2/h3
@@ -212,8 +212,8 @@ main.container {
   position: relative;
   z-index: 2;
   align-self: center;
-  padding-top: 7rem;
-  padding-bottom: 6rem;
+  padding-top: 5.5rem;
+  padding-bottom: 4.5rem;
 }
 
 .rm-hero-copy {
@@ -1115,7 +1115,7 @@ main.container {
   }
 
   .rm-hero {
-    min-height: 700px;
+    min-height: 520px;
   }
 
   .rm-hero-visual {
@@ -1145,12 +1145,12 @@ main.container {
   }
 
   .rm-hero {
-    min-height: 650px;
+    min-height: 460px;
   }
 
   .rm-hero-content {
-    padding-top: 6rem;
-    padding-bottom: 4rem;
+    padding-top: 5rem;
+    padding-bottom: 3.5rem;
   }
 
   .rm-hero-visual {
