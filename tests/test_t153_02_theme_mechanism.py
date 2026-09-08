@@ -155,3 +155,10 @@ def test_color_scheme_is_overridable_by_a_theme(tmp_path, monkeypatch):
     monkeypatch.setattr(build_mod, "THEMES_DIR", tmp_path / "themes")
     out = build_mod.build()
     assert '[data-theme="radical"]' in out["css"]
+
+
+def test_festival_broadsheet_keeps_page_sections_compact():
+    css = build_mod.build()["css"]
+    theme_block = css.split('[data-theme="festival-broadsheet"] {', 1)[1].split("\n}", 1)[0]
+    assert "--rm-section: 4rem;" in theme_block
+    assert "--rm-section: 6.5rem;" not in theme_block
