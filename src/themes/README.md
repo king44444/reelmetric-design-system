@@ -31,8 +31,10 @@ the full rule; the short version:
   `ThemeContractViolation`. A concept that needs more than that is out of
   contract (phase 153 D3) and gets reported, not quietly accommodated.
 - **Populated by T153.04** with the phase's four concepts: `dense-tool.css`,
-  `editorial.css`, `muted-minimal.css`, `radical.css` (sorted order == build
-  order). None is active by default — a theme file sitting here renders
+  `editorial.css`, `muted-minimal.css`, `radical.css`; T153.05 added
+  `festival-broadsheet.css`; the 2026-09-08 gallery refresh added
+  `archive-classic.css` and `data-room.css` from the ADR-0055 briefing
+  (sorted order == build order). None is active by default — a theme file sitting here renders
   nothing until something sets `data-theme` on the page (T153.06's job for
   the winner); see each file's own header comment for its brief and for the
   report.css tokenization gap it ran into (report/document type scale and

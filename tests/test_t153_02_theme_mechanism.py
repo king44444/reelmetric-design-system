@@ -28,12 +28,14 @@ def _write_theme(tmp_path: Path, name: str, body: str) -> Path:
 
 def test_theme_discovery_finds_the_committed_concepts_sorted():
     """T153.04 populated src/themes/ with four concepts; T153.05 added a
-    fifth (festival-broadsheet, ADR-0055's winning direction). Discovery
+    fifth (festival-broadsheet, ADR-0055's winning direction). The
+    2026-09-08 gallery refresh added archive-classic and data-room. Discovery
     order is the sort order of their filenames, which is also their
     appended order in the compiled CSS (see docs/theme_override_contract.md)."""
     found = build_mod.discover_theme_files()
     assert [p.stem for p in found] == [
-        "dense-tool", "editorial", "festival-broadsheet", "muted-minimal", "radical",
+        "archive-classic", "data-room", "dense-tool", "editorial",
+        "festival-broadsheet", "muted-minimal", "radical",
     ]
 
 

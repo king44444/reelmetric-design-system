@@ -1,0 +1,101 @@
+/* ADR-0055 review option: Data Room.
+   Brief source: surface #eef2f1, text #12201f, accent #007c89,
+   secondary #6a4cc2; IBM Plex Sans for text and IBM Plex Mono for compact
+   numbers/labels. The posture is dense, table-first, square, hairlined, and
+   shadowless. This stays inside the token-only theme contract. */
+@layer overrides {
+[data-theme="data-room"] {
+  color-scheme: light;
+
+  --rm-font-sans: "IBM Plex Sans", Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --rm-font-serif: "IBM Plex Sans", Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --rm-ink: #12201f;
+  --rm-ink-2: #182927;
+  --rm-panel: #102220;
+  --rm-panel-2: #162d2a;
+  --rm-cream: #fbffff;
+  --rm-paper: #eef2f1;
+  --rm-muted: #b8d8d9;
+  --rm-muted-2: #405452;
+  --rm-line: rgba(18, 32, 31, 0.16);
+  --rm-line-strong: rgba(18, 32, 31, 0.32);
+
+  --rm-gold: #9fdde0;
+  --rm-gold-2: #6a4cc2;
+  --rm-red: #6a4cc2;
+  --rm-teal: #007c89;
+  --rm-blue: #007c89;
+
+  --rm-charcoal: #182927;
+  --rm-charcoal-hover: #223633;
+  --rm-slate: #4a605d;
+  --rm-light-gray: #d9e2e0;
+  --rm-black: #12201f;
+
+  --rm-text-xs: 0.7rem;
+  --rm-text-sm: 0.82rem;
+  --rm-text-md: 0.9rem;
+  --rm-text-lg: 1.02rem;
+  --rm-text-xl: 1.18rem;
+  --rm-text-2xl: 1.55rem;
+  --rm-text-3xl: 2.2rem;
+  --rm-text-4xl: 3.25rem;
+
+  --rm-page-pad: 1rem;
+  --rm-container: 1380px;
+  --rm-section: 3rem;
+  --rm-section-tight: 1.8rem;
+  --rm-radius: 0px;
+  --rm-radius-sm: 0px;
+  --rm-shadow: none;
+  --rm-shadow-soft: none;
+
+  --rm-report-muted: #4c5f5d;
+  --rm-report-body: #263936;
+  --rm-report-border: #c8d4d1;
+  --rm-report-border-soft: #d2dcda;
+  --rm-report-border-chip: #bfcfcb;
+  --rm-report-border-card: #cfd9d7;
+  --rm-report-border-hair: #dce4e2;
+
+  --rm-report-doc-panel-bg: rgba(18, 32, 31, .94);
+  --rm-report-doc-shadow: none;
+  --rm-report-doc-track-bg: rgba(251, 255, 255, .08);
+  --rm-report-doc-field-bg: rgba(251, 255, 255, .035);
+  --rm-report-doc-hair: rgba(251, 255, 255, .06);
+  --rm-report-doc-accent-2: #9fdde0;
+  --rm-report-doc-accent-bg-soft: rgba(0, 124, 137, .1);
+  --rm-report-doc-accent-border: rgba(0, 124, 137, .34);
+  --rm-report-doc-accent-bg: rgba(0, 124, 137, .2);
+  --rm-report-doc-accent-bg-hover: rgba(0, 124, 137, .3);
+
+  --rm-report-doc-print-border: #c4cfcc;
+  --rm-report-doc-print-ink: #12201f;
+  --rm-report-doc-print-muted: #445653;
+  --rm-report-doc-print-muted-2: #5e716e;
+  --rm-report-doc-print-track-bg: #dde6e3;
+  --rm-report-doc-print-accent: #007c89;
+  --rm-report-doc-print-accent-dark: #00525b;
+  --rm-report-doc-print-accent-bg: #e2f2f1;
+  --rm-report-doc-print-pill-bg: #d2e8e7;
+
+  --rm-report-font-heading: var(--rm-font-sans);
+  --rm-report-font-ui: var(--rm-font-sans);
+  --rm-report-text-h1: clamp(1.8rem, 3vw, 2.7rem);
+  --rm-report-text-h2: 1.02rem;
+  --rm-report-leading-h1: 1.05;
+  --rm-report-leading-lead: 1.55;
+  --rm-report-leading-sub: 1.45;
+  --rm-report-leading-card: 1.5;
+  --rm-report-section-radius: 0px;
+  --rm-report-section-border: 1px solid var(--rm-report-border-soft);
+  --rm-report-section-bg: var(--rm-cream);
+  --rm-report-section-divider: none;
+  --rm-report-pill-radius: 0px;
+  --rm-report-table-border: 1px solid var(--rm-report-border);
+  --rm-report-table-cell-padding: .42rem .5rem;
+  --rm-report-accent: #007c89;
+  --rm-report-accent-2: #6a4cc2;
+}
+}
