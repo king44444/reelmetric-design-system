@@ -724,6 +724,7 @@ main.container {
   padding: 4rem;
   border: 1px solid var(--rm-line);
   border-radius: var(--rm-radius);
+  color: var(--rm-cream);
   background:
     linear-gradient(90deg, rgba(232, 174, 77, 0.14), transparent 50%),
     var(--rm-panel);
@@ -750,6 +751,14 @@ main.container {
   position: relative;
   z-index: 1;
   max-width: 48rem;
+}
+
+.rm-cta .rm-kicker {
+  color: rgba(247, 239, 225, 0.78);
+}
+
+.rm-cta .rm-lead {
+  color: rgba(247, 239, 225, 0.76);
 }
 
 .rm-footer {
@@ -1068,7 +1077,9 @@ main.container {
 
 .rm-landing-contact {
   justify-self: end;
+  color: inherit;
   text-align: right;
+  text-decoration: none;
 }
 
 .rm-landing-main {

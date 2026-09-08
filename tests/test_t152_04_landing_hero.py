@@ -56,3 +56,20 @@ def test_shared_hero_protects_dark_page_readability():
     assert "rgba(247, 239, 225, 0.76)" in hero_kicker_block
     assert "max-width: 15ch;" in hero_title_block
     assert "font-size: min(var(--rm-text-4xl), 4.25rem);" in hero_title_block
+
+
+def test_shared_cta_protects_dark_panel_readability():
+    css = build_mod.build()["css"]
+    cta_block = css.split(".rm-cta {", 1)[1].split("\n}", 1)[0]
+    cta_kicker_block = css.split(".rm-cta .rm-kicker {", 1)[1].split("\n}", 1)[0]
+    cta_lead_block = css.split(".rm-cta .rm-lead {", 1)[1].split("\n}", 1)[0]
+    assert "color: var(--rm-cream);" in cta_block
+    assert "rgba(247, 239, 225, 0.78)" in cta_kicker_block
+    assert "rgba(247, 239, 225, 0.76)" in cta_lead_block
+
+
+def test_landing_contact_link_keeps_wordmark_styling():
+    css = build_mod.build()["css"]
+    landing_contact_block = css.split(".rm-landing-contact {", 1)[1].split("\n}", 1)[0]
+    assert "color: inherit;" in landing_contact_block
+    assert "text-decoration: none;" in landing_contact_block
