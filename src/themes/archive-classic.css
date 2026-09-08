@@ -1,0 +1,101 @@
+/* ADR-0055 review option: Archive Classic.
+   Brief source: surface #f3efe3, text #1f2421, accent #386641,
+   secondary #8f2d56; Fraunces for display, Source Serif 4 for report prose,
+   Inter for UI labels. The posture is bookish, soft-paneled, ruled-row, and
+   print-first. This stays inside the token-only theme contract. */
+@layer overrides {
+[data-theme="archive-classic"] {
+  color-scheme: light;
+
+  --rm-font-sans: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --rm-font-serif: "Fraunces", "Source Serif 4", Georgia, "Times New Roman", serif;
+
+  --rm-ink: #1f2421;
+  --rm-ink-2: #292f2b;
+  --rm-panel: #1f2421;
+  --rm-panel-2: #2b322d;
+  --rm-cream: #fffaf0;
+  --rm-paper: #f3efe3;
+  --rm-muted: #d8ceb8;
+  --rm-muted-2: #5f594d;
+  --rm-line: rgba(31, 36, 33, 0.14);
+  --rm-line-strong: rgba(31, 36, 33, 0.3);
+
+  --rm-gold: #b9d6ba;
+  --rm-gold-2: #8f2d56;
+  --rm-red: #8f2d56;
+  --rm-teal: #386641;
+  --rm-blue: #386641;
+
+  --rm-charcoal: #2b3028;
+  --rm-charcoal-hover: #3a4035;
+  --rm-slate: #625d52;
+  --rm-light-gray: #e2dac9;
+  --rm-black: #1f2421;
+
+  --rm-text-xs: 0.82rem;
+  --rm-text-sm: 0.94rem;
+  --rm-text-md: 1.04rem;
+  --rm-text-lg: 1.22rem;
+  --rm-text-xl: 1.52rem;
+  --rm-text-2xl: 2rem;
+  --rm-text-3xl: 2.9rem;
+  --rm-text-4xl: 4.2rem;
+
+  --rm-page-pad: 1.25rem;
+  --rm-container: 1180px;
+  --rm-section: 4.6rem;
+  --rm-section-tight: 3rem;
+  --rm-radius: 6px;
+  --rm-radius-sm: 3px;
+  --rm-shadow: 0 18px 42px rgba(31, 36, 33, .12);
+  --rm-shadow-soft: 0 10px 24px rgba(31, 36, 33, .09);
+
+  --rm-report-muted: #605849;
+  --rm-report-body: #403a31;
+  --rm-report-border: #d9cfb8;
+  --rm-report-border-soft: #e2d8c0;
+  --rm-report-border-chip: #d4c9b0;
+  --rm-report-border-card: #e5dcc8;
+  --rm-report-border-hair: #eadfcb;
+
+  --rm-report-doc-panel-bg: rgba(31, 36, 33, .93);
+  --rm-report-doc-shadow: 0 24px 56px rgba(31, 36, 33, .26);
+  --rm-report-doc-track-bg: rgba(255, 250, 240, .08);
+  --rm-report-doc-field-bg: rgba(255, 250, 240, .035);
+  --rm-report-doc-hair: rgba(255, 250, 240, .06);
+  --rm-report-doc-accent-2: #b9d6ba;
+  --rm-report-doc-accent-bg-soft: rgba(56, 102, 65, .1);
+  --rm-report-doc-accent-border: rgba(56, 102, 65, .32);
+  --rm-report-doc-accent-bg: rgba(56, 102, 65, .18);
+  --rm-report-doc-accent-bg-hover: rgba(56, 102, 65, .26);
+
+  --rm-report-doc-print-border: #d3c7ad;
+  --rm-report-doc-print-ink: #1f2421;
+  --rm-report-doc-print-muted: #5c5549;
+  --rm-report-doc-print-muted-2: #6f675a;
+  --rm-report-doc-print-track-bg: #e7dec9;
+  --rm-report-doc-print-accent: #386641;
+  --rm-report-doc-print-accent-dark: #244329;
+  --rm-report-doc-print-accent-bg: #e7efe2;
+  --rm-report-doc-print-pill-bg: #dbe8d5;
+
+  --rm-report-font-heading: var(--rm-font-serif);
+  --rm-report-font-ui: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --rm-report-text-h1: clamp(2rem, 3.5vw, 3.25rem);
+  --rm-report-text-h2: 1.24rem;
+  --rm-report-leading-h1: 1.12;
+  --rm-report-leading-lead: 1.85;
+  --rm-report-leading-sub: 1.75;
+  --rm-report-leading-card: 1.8;
+  --rm-report-section-radius: 6px;
+  --rm-report-section-border: 1px solid var(--rm-report-border-soft);
+  --rm-report-section-bg: rgba(255, 250, 240, .74);
+  --rm-report-section-divider: 2px solid var(--rm-report-border);
+  --rm-report-pill-radius: 3px;
+  --rm-report-table-border: 1px solid var(--rm-report-border);
+  --rm-report-table-cell-padding: .62rem .7rem;
+  --rm-report-accent: #386641;
+  --rm-report-accent-2: #8f2d56;
+}
+}
