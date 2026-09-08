@@ -170,7 +170,7 @@ main.container {
 .rm-hero {
   position: relative;
   display: grid;
-  min-height: clamp(360px, 46vh, 500px);
+  min-height: var(--rm-hero-min-height);
   overflow: hidden;
   /* T153.08: like .rm-section--ink below, set a light color here so any
      bare heading inside inherits it (base.css's .rm-theme-page h1/h2/h3
@@ -178,7 +178,8 @@ main.container {
      light, this was unnecessary -- the page's own dark foreground already
      applied. .rm-hero .rm-lead already sets its own explicit light color
      and is unaffected; this is what a bare <h1> was missing. */
-  color: var(--rm-cream);
+  color: var(--rm-hero-fg);
+  border-bottom: var(--rm-hero-border);
   background: var(--rm-hero-bg);
 }
 
@@ -202,8 +203,8 @@ main.container {
   position: relative;
   z-index: 2;
   align-self: start;
-  padding-top: 4.25rem;
-  padding-bottom: 3.75rem;
+  padding-top: var(--rm-hero-content-pad-top);
+  padding-bottom: var(--rm-hero-content-pad-bottom);
 }
 
 .rm-hero-copy {
@@ -211,18 +212,18 @@ main.container {
 }
 
 .rm-hero .rm-kicker {
-  color: rgba(247, 239, 225, 0.76);
+  color: var(--rm-hero-kicker);
 }
 
 .rm-hero h1 {
-  max-width: 15ch;
-  font-size: min(var(--rm-text-4xl), 4.25rem);
+  max-width: var(--rm-hero-h1-max-width);
+  font-size: var(--rm-hero-h1-size);
 }
 
 .rm-hero .rm-lead {
   max-width: 46rem;
   margin-bottom: 2rem;
-  color: rgba(247, 239, 225, 0.76);
+  color: var(--rm-hero-lead);
 }
 
 .rm-hero-meta {
@@ -503,10 +504,20 @@ main.container {
 }
 
 .rm-card {
-  border: 1px solid var(--rm-line);
-  border-radius: var(--rm-radius);
-  background: var(--rm-panel);
-  box-shadow: var(--rm-shadow-soft);
+  border: 1px solid var(--rm-card-border);
+  border-radius: var(--rm-card-radius);
+  background: var(--rm-card-bg);
+  box-shadow: var(--rm-card-shadow);
+}
+
+.rm-section--ink .rm-card {
+  color: var(--rm-section-ink-card-fg);
+  background: var(--rm-section-ink-card-bg);
+}
+
+.rm-section--ink .rm-card .rm-muted,
+.rm-section--ink .rm-card p {
+  color: var(--rm-section-ink-muted);
 }
 
 .rm-card--paper {
@@ -712,13 +723,11 @@ main.container {
   position: relative;
   overflow: hidden;
   padding: 4rem;
-  border: 1px solid var(--rm-line);
+  border: 1px solid var(--rm-cta-border);
   border-radius: var(--rm-radius);
-  color: var(--rm-cream);
-  background:
-    linear-gradient(90deg, var(--rm-cta-accent-bg), transparent 50%),
-    var(--rm-panel);
-  box-shadow: var(--rm-shadow);
+  color: var(--rm-cta-fg);
+  background: var(--rm-cta-bg);
+  box-shadow: var(--rm-cta-shadow);
 }
 
 .rm-cta::after {
@@ -733,7 +742,7 @@ main.container {
       var(--rm-cta-rule-color) 5.4rem,
       var(--rm-cta-rule-color) 5.5rem
     );
-  opacity: 0.28;
+  opacity: var(--rm-cta-overlay-opacity);
   pointer-events: none;
 }
 
@@ -744,11 +753,11 @@ main.container {
 }
 
 .rm-cta .rm-kicker {
-  color: rgba(247, 239, 225, 0.78);
+  color: var(--rm-cta-kicker);
 }
 
 .rm-cta .rm-lead {
-  color: rgba(247, 239, 225, 0.76);
+  color: var(--rm-cta-lead);
 }
 
 .rm-footer {
@@ -1125,7 +1134,7 @@ main.container {
   }
 
   .rm-hero {
-    min-height: 420px;
+    min-height: var(--rm-hero-min-height-tablet);
   }
 
   .rm-hero-visual {
@@ -1155,12 +1164,12 @@ main.container {
   }
 
   .rm-hero {
-    min-height: 380px;
+    min-height: var(--rm-hero-min-height-mobile);
   }
 
   .rm-hero-content {
-    padding-top: 3.25rem;
-    padding-bottom: 3rem;
+    padding-top: var(--rm-hero-content-pad-top-mobile);
+    padding-bottom: var(--rm-hero-content-pad-bottom-mobile);
   }
 
   .rm-hero-visual {

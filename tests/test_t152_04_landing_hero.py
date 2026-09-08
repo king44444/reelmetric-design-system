@@ -37,8 +37,10 @@ def test_landing_hero_lives_in_components_layer_not_a_new_one():
 
 def test_shared_hero_does_not_force_a_tall_blank_lead_in():
     css = build_mod.build()["css"]
+    root_block = css.split(":root {", 1)[1].split("\n}", 1)[0]
     hero_block = css.split(".rm-hero {", 1)[1].split("\n}", 1)[0]
-    assert "min-height: clamp(360px, 46vh, 500px);" in hero_block
+    assert "--rm-hero-min-height: clamp(360px, 46vh, 500px);" in root_block
+    assert "min-height: var(--rm-hero-min-height);" in hero_block
     assert "min-height: 780px;" not in hero_block
 
 
@@ -51,21 +53,29 @@ def test_shared_hero_content_is_not_centered_into_a_blank_band():
 
 def test_shared_hero_protects_dark_page_readability():
     css = build_mod.build()["css"]
+    root_block = css.split(":root {", 1)[1].split("\n}", 1)[0]
     hero_kicker_block = css.split(".rm-hero .rm-kicker {", 1)[1].split("\n}", 1)[0]
     hero_title_block = css.split(".rm-hero h1 {", 1)[1].split("\n}", 1)[0]
-    assert "rgba(247, 239, 225, 0.76)" in hero_kicker_block
-    assert "max-width: 15ch;" in hero_title_block
-    assert "font-size: min(var(--rm-text-4xl), 4.25rem);" in hero_title_block
+    assert "--rm-hero-kicker: rgba(247, 239, 225, 0.76);" in root_block
+    assert "--rm-hero-h1-max-width: 15ch;" in root_block
+    assert "--rm-hero-h1-size: min(var(--rm-text-4xl), 4.25rem);" in root_block
+    assert "color: var(--rm-hero-kicker);" in hero_kicker_block
+    assert "max-width: var(--rm-hero-h1-max-width);" in hero_title_block
+    assert "font-size: var(--rm-hero-h1-size);" in hero_title_block
 
 
 def test_shared_cta_protects_dark_panel_readability():
     css = build_mod.build()["css"]
+    root_block = css.split(":root {", 1)[1].split("\n}", 1)[0]
     cta_block = css.split(".rm-cta {", 1)[1].split("\n}", 1)[0]
     cta_kicker_block = css.split(".rm-cta .rm-kicker {", 1)[1].split("\n}", 1)[0]
     cta_lead_block = css.split(".rm-cta .rm-lead {", 1)[1].split("\n}", 1)[0]
-    assert "color: var(--rm-cream);" in cta_block
-    assert "rgba(247, 239, 225, 0.78)" in cta_kicker_block
-    assert "rgba(247, 239, 225, 0.76)" in cta_lead_block
+    assert "--rm-cta-fg: var(--rm-cream);" in root_block
+    assert "--rm-cta-kicker: rgba(247, 239, 225, 0.78);" in root_block
+    assert "--rm-cta-lead: rgba(247, 239, 225, 0.76);" in root_block
+    assert "color: var(--rm-cta-fg);" in cta_block
+    assert "color: var(--rm-cta-kicker);" in cta_kicker_block
+    assert "color: var(--rm-cta-lead);" in cta_lead_block
 
 
 def test_landing_contact_link_keeps_wordmark_styling():
