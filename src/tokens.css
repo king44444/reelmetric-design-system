@@ -55,6 +55,60 @@
   --rm-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
   --rm-shadow-soft: 0 16px 34px rgba(0, 0, 0, 0.18);
 
+  /* Shared component roles. Defaults preserve the current monochrome surface;
+     themes can now move app cards, buttons, status rows, and upload controls
+     without overriding selector internals. */
+  --rm-brand-mark-color: #ffffff;
+  --rm-brand-mark-bg: #000000;
+  --rm-button-primary-fg: #ffffff;
+  --rm-button-primary-bg: #000000;
+  --rm-button-primary-bg-hover: #262626;
+  --rm-button-secondary-fg: #000000;
+  --rm-button-secondary-border: #b5b5b5;
+  --rm-button-secondary-bg: #ffffff;
+  --rm-button-secondary-border-hover: #000000;
+  --rm-button-secondary-bg-hover: #f2f2f2;
+  --rm-button-disabled-fg: #8a8a8a;
+  --rm-button-disabled-bg: #e5e5e5;
+  --rm-card-paper-border: rgba(9, 11, 15, 0.12);
+  --rm-card-paper-bg: #ffffff;
+  --rm-card-paper-shadow: 0 12px 28px rgba(9, 11, 15, 0.08);
+  --rm-paper-muted: #5d6672;
+  --rm-status-row-border: #e5e5e5;
+  --rm-status-badge-fg: #333333;
+  --rm-status-badge-bg: #f5f5f5;
+  --rm-status-badge-border: #d0d0d0;
+  --rm-status-badge-dot: #a3a3a3;
+  --rm-status-badge-active-fg: #000000;
+  --rm-status-badge-active-bg: #ffffff;
+  --rm-status-badge-active-border: #000000;
+  --rm-status-badge-active-dot: #000000;
+  --rm-progress-track: #e0e0e0;
+  --rm-progress-dot-bg: #ffffff;
+  --rm-progress-dot-border: #c7c7c7;
+  --rm-progress-active: #000000;
+  --rm-progress-active-ring: rgba(0, 0, 0, 0.1);
+  --rm-progress-label: #737373;
+  --rm-progress-label-active: #000000;
+  --rm-progress-check-fg: #ffffff;
+  --rm-dropzone-border: #b5b5b5;
+  --rm-dropzone-bg: #fafafa;
+  --rm-dropzone-border-hover: #000000;
+  --rm-dropzone-bg-hover: #f2f2f2;
+  --rm-dropzone-icon-border: #000000;
+  --rm-dropzone-file-bg: #000000;
+  --rm-dropzone-file-fg: #ffffff;
+  --rm-link-accent: #000000;
+  --rm-danger-text: #000000;
+  --rm-cta-accent-bg: rgba(232, 174, 77, 0.14);
+  --rm-cta-rule-color: rgba(247, 239, 225, 0.06);
+  --rm-landing-bg: var(--rm-cream);
+  --rm-landing-ink: var(--rm-black);
+  --rm-landing-muted: var(--rm-charcoal);
+  --rm-landing-font-sans: Arial, Helvetica, sans-serif;
+  --rm-landing-font-serif: Georgia, "Times New Roman", serif;
+  --rm-landing-font-wordmark: Impact, Haettenschweiler, "Arial Black", "Franklin Gothic Heavy", sans-serif;
+
   /* T152.03: script-web's static/css/styles.css defined its own 13-name token
      vocabulary (--charcoal, --slate, --amber, --muted, --border, --panel,
      --panel-white, --script-white, --light-gray, --bg, --text, --accent,
@@ -79,6 +133,26 @@
   --rm-report-border-chip: #d0d0d0;
   --rm-report-border-card: #e2e2e2;
   --rm-report-border-hair: #ececec;
+  --rm-report-eyebrow-bg: var(--rm-cream);
+  --rm-report-eyebrow-color: var(--rm-charcoal);
+  --rm-report-eyebrow-border: var(--rm-report-accent);
+  --rm-report-chip-bg: var(--rm-paper);
+  --rm-report-chip-color: var(--rm-report-body);
+  --rm-report-panel-bg: var(--rm-paper);
+  --rm-report-panel-border: var(--rm-report-border-card);
+  --rm-report-panel-radius: 8px;
+  --rm-report-panel-radius-sm: 6px;
+  --rm-report-card-padding: 1rem;
+  --rm-report-card-padding-sm: 0.75rem;
+  --rm-report-dialogue-border-accent: var(--rm-black);
+  --rm-report-data-fill: var(--rm-black);
+  --rm-report-table-heading-color: var(--rm-report-muted);
+  --rm-report-table-heading-border: 1px solid var(--rm-report-border);
+  --rm-report-phase-bg: var(--rm-cream);
+  --rm-report-phase-fg: var(--rm-charcoal);
+  --rm-report-phase-border: var(--rm-muted);
+  --rm-report-pending-bg: var(--rm-cream);
+  --rm-report-pending-radius: 10px;
 
   /* T153.03 -- document surface (decision_package.html .dp-*, worksheet_public.html
      .wp-* -- near-identical dark navy/gold layouts, predating T151.10's monochrome

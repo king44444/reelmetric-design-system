@@ -20,19 +20,12 @@
        pill-radius, table styling, type/leading scale) implement "editorial
        rhythm, wider line height, full-width section dividers, fewer pills,
        tables read like review ledgers" as concretely as the current token
-       contract allows: sections lose their card border/background/radius
-       entirely (a flowing document instead of boxed cards) and gain a
-       full-width top divider instead; pills flatten from a fully round
-       999px to a 4px tag radius; table rows get a slightly heavier,
-       visible-by-design rule instead of a near-invisible hairline. This is
-       a genuinely different structural read from the other five themes on
-       file and reviewers should weigh in on it specifically, not just the
-       color choice.
-     - Money-shot/char-card/angle-card/comp-card interior type sizing and
-       the .ru-pending empty state stay on their base (T153.03-era) literal
-       values -- named in T153.05's completion evidence as not tokenized in
-       this pass, same as report.css's own header comment already names for
-       the type-scale/spacing system generally. */
+     contract allows: sections become square near-white briefing panels with
+       full-width top dividers; pills flatten from a fully round 999px to a
+       4px tag radius; table rows get a slightly heavier, visible-by-design
+       rule instead of a near-invisible hairline. This is a genuinely
+       different structural read from the other themes on file and reviewers
+       should weigh in on it specifically, not just the color choice. */
 @layer overrides {
 [data-theme="festival-broadsheet"] {
   color-scheme: light;
@@ -44,8 +37,8 @@
   --rm-ink-2: #2e2a23;
   --rm-panel: #1d1a15;
   --rm-panel-2: #26221b;
-  --rm-cream: #fff7e8;
-  --rm-paper: #f7ecd5;
+  --rm-cream: #fffdf7;
+  --rm-paper: #fff7e8;
   /* Light tint, not a dark one -- report.css's only use of --rm-muted sits
      on the permanently-dark document panel (.dp-section-sub/.dp-field-label/
      .dp-caveat p), so even this light-surface concept needs a light value
@@ -93,8 +86,59 @@
   --rm-section-tight: 3rem;
   --rm-radius: 4px;
   --rm-radius-sm: 3px;
-  --rm-shadow: 0 20px 50px rgba(36, 33, 28, .2);
-  --rm-shadow-soft: 0 12px 28px rgba(36, 33, 28, .14);
+  --rm-shadow: none;
+  --rm-shadow-soft: none;
+
+  --rm-brand-mark-color: #fffdf7;
+  --rm-brand-mark-bg: #245c9c;
+  --rm-button-primary-fg: #fffdf7;
+  --rm-button-primary-bg: #245c9c;
+  --rm-button-primary-bg-hover: #163a63;
+  --rm-button-secondary-fg: #245c9c;
+  --rm-button-secondary-border: #d8cbb5;
+  --rm-button-secondary-bg: #fffdf7;
+  --rm-button-secondary-border-hover: #245c9c;
+  --rm-button-secondary-bg-hover: #eaf1f8;
+  --rm-button-disabled-fg: #7f7564;
+  --rm-button-disabled-bg: #ece0c8;
+  --rm-card-paper-border: #d8cbb5;
+  --rm-card-paper-bg: #fffdf7;
+  --rm-card-paper-shadow: none;
+  --rm-paper-muted: #5f5646;
+  --rm-status-row-border: #d8cbb5;
+  --rm-status-badge-fg: #5f5646;
+  --rm-status-badge-bg: #fff7e8;
+  --rm-status-badge-border: #d8cbb5;
+  --rm-status-badge-dot: #c05a3b;
+  --rm-status-badge-active-fg: #fffdf7;
+  --rm-status-badge-active-bg: #245c9c;
+  --rm-status-badge-active-border: #245c9c;
+  --rm-status-badge-active-dot: #fffdf7;
+  --rm-progress-track: #d8cbb5;
+  --rm-progress-dot-bg: #fffdf7;
+  --rm-progress-dot-border: #d8cbb5;
+  --rm-progress-active: #245c9c;
+  --rm-progress-active-ring: rgba(36, 92, 156, .16);
+  --rm-progress-label: #6b6248;
+  --rm-progress-label-active: #24211c;
+  --rm-progress-check-fg: #fffdf7;
+  --rm-dropzone-border: #d8cbb5;
+  --rm-dropzone-bg: #fffdf7;
+  --rm-dropzone-border-hover: #245c9c;
+  --rm-dropzone-bg-hover: #eaf1f8;
+  --rm-dropzone-icon-border: #245c9c;
+  --rm-dropzone-file-bg: #245c9c;
+  --rm-dropzone-file-fg: #fffdf7;
+  --rm-link-accent: #245c9c;
+  --rm-danger-text: #9a4029;
+  --rm-cta-accent-bg: rgba(192, 90, 59, .18);
+  --rm-cta-rule-color: rgba(255, 253, 247, .08);
+  --rm-landing-bg: #fff7e8;
+  --rm-landing-ink: #24211c;
+  --rm-landing-muted: #5f5646;
+  --rm-landing-font-sans: var(--rm-font-sans);
+  --rm-landing-font-serif: var(--rm-font-serif);
+  --rm-landing-font-wordmark: var(--rm-font-serif);
 
   /* Darker than a first pass -- #7a7058 measured 4.18:1 on --rm-paper,
      just under WCAG AA; this measures 5.17:1, verified live. */
@@ -105,6 +149,26 @@
   --rm-report-border-chip: #e2d4b6;
   --rm-report-border-card: #ecdfc4;
   --rm-report-border-hair: #f2e8d2;
+  --rm-report-eyebrow-bg: #245c9c;
+  --rm-report-eyebrow-color: #fffdf7;
+  --rm-report-eyebrow-border: #245c9c;
+  --rm-report-chip-bg: #fffdf7;
+  --rm-report-chip-color: #423d33;
+  --rm-report-panel-bg: #fffdf7;
+  --rm-report-panel-border: #d8cbb5;
+  --rm-report-panel-radius: 0px;
+  --rm-report-panel-radius-sm: 0px;
+  --rm-report-card-padding: 1.05rem;
+  --rm-report-card-padding-sm: .78rem;
+  --rm-report-dialogue-border-accent: #c05a3b;
+  --rm-report-data-fill: #245c9c;
+  --rm-report-table-heading-color: #245c9c;
+  --rm-report-table-heading-border: 2px solid #d8cbb5;
+  --rm-report-phase-bg: #fffdf7;
+  --rm-report-phase-fg: #423d33;
+  --rm-report-phase-border: #d8cbb5;
+  --rm-report-pending-bg: #fffdf7;
+  --rm-report-pending-radius: 0px;
 
   --rm-report-doc-panel-bg: rgba(36, 33, 28, .92);
   --rm-report-doc-shadow: 0 24px 60px rgba(36, 33, 28, .32);
@@ -139,9 +203,9 @@
   --rm-report-leading-card: 1.85;
 
   --rm-report-section-radius: 0px;
-  --rm-report-section-border: none;
-  --rm-report-section-bg: transparent;
-  --rm-report-section-divider: 1px solid var(--rm-report-border);
+  --rm-report-section-border: 1px solid var(--rm-report-border);
+  --rm-report-section-bg: #fffdf7;
+  --rm-report-section-divider: 2px solid var(--rm-report-accent);
 
   --rm-report-pill-radius: 4px;
 
