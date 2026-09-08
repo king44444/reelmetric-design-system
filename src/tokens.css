@@ -56,6 +56,18 @@
   --rm-shadow-soft: 0 16px 34px rgba(0, 0, 0, 0.18);
   --rm-page-bg: linear-gradient(135deg, var(--rm-paper) 0%, #f5f0e6 100%);
   --rm-page-noise-opacity: 0.03;
+  --rm-section-divider: 0 solid transparent;
+  --rm-section-ink-fg: var(--rm-cream);
+  --rm-section-ink-bg: var(--rm-ink);
+  --rm-section-ink-kicker: rgba(255, 255, 255, 0.82);
+  --rm-section-ink-muted: var(--rm-muted);
+  --rm-section-ink-card-fg: var(--rm-cream);
+  --rm-section-ink-card-bg: var(--rm-panel);
+  --rm-section-paper-lead: #58616d;
+  --rm-card-bg: var(--rm-panel);
+  --rm-card-border: var(--rm-line);
+  --rm-card-radius: var(--rm-radius);
+  --rm-card-shadow: var(--rm-shadow-soft);
 
   /* Shared component roles. Defaults preserve the current monochrome surface;
      themes can now move app cards, buttons, status rows, and upload controls
@@ -132,6 +144,28 @@
     );
   --rm-hero-rule-opacity: 0.28;
   --rm-hero-fade-bg: linear-gradient(180deg, transparent, var(--rm-ink));
+  --rm-hero-fg: var(--rm-cream);
+  --rm-hero-kicker: rgba(247, 239, 225, 0.76);
+  --rm-hero-lead: rgba(247, 239, 225, 0.76);
+  --rm-hero-border: 0 solid transparent;
+  --rm-hero-min-height: clamp(360px, 46vh, 500px);
+  --rm-hero-min-height-tablet: 420px;
+  --rm-hero-min-height-mobile: 380px;
+  --rm-hero-content-pad-top: 4.25rem;
+  --rm-hero-content-pad-bottom: 3.75rem;
+  --rm-hero-content-pad-top-mobile: 3.25rem;
+  --rm-hero-content-pad-bottom-mobile: 3rem;
+  --rm-hero-h1-max-width: 15ch;
+  --rm-hero-h1-size: min(var(--rm-text-4xl), 4.25rem);
+  --rm-cta-bg:
+    linear-gradient(90deg, var(--rm-cta-accent-bg), transparent 50%),
+    var(--rm-panel);
+  --rm-cta-fg: var(--rm-cream);
+  --rm-cta-border: var(--rm-line);
+  --rm-cta-shadow: var(--rm-shadow);
+  --rm-cta-kicker: rgba(247, 239, 225, 0.78);
+  --rm-cta-lead: rgba(247, 239, 225, 0.76);
+  --rm-cta-overlay-opacity: 0.28;
 
   /* T152.03: script-web's static/css/styles.css defined its own 13-name token
      vocabulary (--charcoal, --slate, --amber, --muted, --border, --panel,

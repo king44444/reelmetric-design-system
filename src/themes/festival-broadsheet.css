@@ -90,6 +90,18 @@
   --rm-shadow-soft: none;
   --rm-page-bg: #fff7e8;
   --rm-page-noise-opacity: 0;
+  --rm-section-divider: 1px solid #d8cbb5;
+  --rm-section-ink-fg: #24211c;
+  --rm-section-ink-bg: #fffdf7;
+  --rm-section-ink-kicker: #245c9c;
+  --rm-section-ink-muted: #5f5646;
+  --rm-section-ink-card-fg: #24211c;
+  --rm-section-ink-card-bg: #fff7e8;
+  --rm-section-paper-lead: #5f5646;
+  --rm-card-bg: #fffdf7;
+  --rm-card-border: #d8cbb5;
+  --rm-card-radius: 0px;
+  --rm-card-shadow: none;
 
   --rm-brand-mark-color: #fffdf7;
   --rm-brand-mark-bg: #245c9c;
@@ -149,10 +161,30 @@
   --rm-landing-wordmark-mobile-size: clamp(3rem, 13vw, 5.8rem);
   --rm-landing-wordmark-mobile-max-width: calc(100vw - 1.5rem);
   --rm-landing-wordmark-mobile-transform: none;
-  --rm-hero-bg: #1d1a15;
+  --rm-hero-bg: #fff7e8;
   --rm-hero-rule-bg: none;
   --rm-hero-rule-opacity: 0;
   --rm-hero-fade-bg: none;
+  --rm-hero-fg: #24211c;
+  --rm-hero-kicker: #245c9c;
+  --rm-hero-lead: #423d33;
+  --rm-hero-border: 2px solid #245c9c;
+  --rm-hero-min-height: clamp(340px, 42vh, 470px);
+  --rm-hero-min-height-tablet: 390px;
+  --rm-hero-min-height-mobile: 360px;
+  --rm-hero-content-pad-top: 5rem;
+  --rm-hero-content-pad-bottom: 3.8rem;
+  --rm-hero-content-pad-top-mobile: 3.75rem;
+  --rm-hero-content-pad-bottom-mobile: 3rem;
+  --rm-hero-h1-max-width: 18ch;
+  --rm-hero-h1-size: clamp(3rem, 5.2vw, 5.2rem);
+  --rm-cta-bg: #fffdf7;
+  --rm-cta-fg: #24211c;
+  --rm-cta-border: #245c9c;
+  --rm-cta-shadow: none;
+  --rm-cta-kicker: #245c9c;
+  --rm-cta-lead: #423d33;
+  --rm-cta-overlay-opacity: 0;
 
   /* Darker than a first pass -- #7a7058 measured 4.18:1 on --rm-paper,
      just under WCAG AA; this measures 5.17:1, verified live. */

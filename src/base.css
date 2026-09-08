@@ -33,6 +33,7 @@ body.rm-theme-page {
 
 .rm-section {
   padding: var(--rm-section) 0;
+  border-top: var(--rm-section-divider);
 }
 
 .rm-section--tight {
@@ -45,8 +46,8 @@ body.rm-theme-page {
 }
 
 .rm-section--ink {
-  color: var(--rm-cream);
-  background: var(--rm-ink);
+  color: var(--rm-section-ink-fg);
+  background: var(--rm-section-ink-bg);
 }
 
 .rm-section-head {
@@ -70,7 +71,7 @@ body.rm-theme-page {
 }
 
 .rm-section--ink .rm-kicker {
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--rm-section-ink-kicker);
 }
 
 .rm-kicker::before {
@@ -139,7 +140,7 @@ body.rm-theme-page {
 
 .rm-section--paper .rm-lead,
 .rm-section--paper .rm-muted {
-  color: #58616d;
+  color: var(--rm-section-paper-lead);
 }
 
 .rm-muted {
