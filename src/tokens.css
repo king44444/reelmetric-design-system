@@ -54,6 +54,8 @@
   --rm-radius-sm: 6px;
   --rm-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
   --rm-shadow-soft: 0 16px 34px rgba(0, 0, 0, 0.18);
+  --rm-page-bg: linear-gradient(135deg, var(--rm-paper) 0%, #f5f0e6 100%);
+  --rm-page-noise-opacity: 0.03;
 
   /* Shared component roles. Defaults preserve the current monochrome surface;
      themes can now move app cards, buttons, status rows, and upload controls
@@ -108,6 +110,28 @@
   --rm-landing-font-sans: Arial, Helvetica, sans-serif;
   --rm-landing-font-serif: Georgia, "Times New Roman", serif;
   --rm-landing-font-wordmark: Impact, Haettenschweiler, "Arial Black", "Franklin Gothic Heavy", sans-serif;
+  --rm-landing-wordmark-size: clamp(5.1rem, 15.8vw, 19rem);
+  --rm-landing-wordmark-line-height: 0.78;
+  --rm-landing-wordmark-letter-spacing: clamp(-0.015em, 0.08vw, 0.02em);
+  --rm-landing-wordmark-max-width: calc(100vw - clamp(1rem, 2vw, 1.8rem));
+  --rm-landing-wordmark-transform: scaleY(1.48);
+  --rm-landing-wordmark-mobile-size: clamp(3.2rem, 15.5vw, 6.8rem);
+  --rm-landing-wordmark-mobile-max-width: calc(100vw - 1rem);
+  --rm-landing-wordmark-mobile-transform: scaleY(1.22);
+  --rm-hero-bg:
+    linear-gradient(90deg, rgba(9, 11, 15, 0.92), rgba(9, 11, 15, 0.66) 48%, rgba(9, 11, 15, 0.2)),
+    linear-gradient(180deg, rgba(9, 11, 15, 0.2), rgba(9, 11, 15, 0.94)),
+    var(--rm-ink-2);
+  --rm-hero-rule-bg:
+    repeating-linear-gradient(
+      0deg,
+      rgba(247, 239, 225, 0.08) 0,
+      rgba(247, 239, 225, 0.08) 1px,
+      transparent 1px,
+      transparent 56px
+    );
+  --rm-hero-rule-opacity: 0.28;
+  --rm-hero-fade-bg: linear-gradient(180deg, transparent, var(--rm-ink));
 
   /* T152.03: script-web's static/css/styles.css defined its own 13-name token
      vocabulary (--charcoal, --slate, --amber, --muted, --border, --panel,

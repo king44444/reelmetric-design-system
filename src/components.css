@@ -179,25 +179,15 @@ main.container {
      applied. .rm-hero .rm-lead already sets its own explicit light color
      and is unaffected; this is what a bare <h1> was missing. */
   color: var(--rm-cream);
-  background:
-    linear-gradient(90deg, rgba(9, 11, 15, 0.92), rgba(9, 11, 15, 0.66) 48%, rgba(9, 11, 15, 0.2)),
-    linear-gradient(180deg, rgba(9, 11, 15, 0.2), rgba(9, 11, 15, 0.94)),
-    var(--rm-ink-2);
+  background: var(--rm-hero-bg);
 }
 
 .rm-hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    repeating-linear-gradient(
-      0deg,
-      rgba(247, 239, 225, 0.08) 0,
-      rgba(247, 239, 225, 0.08) 1px,
-      transparent 1px,
-      transparent 56px
-    );
-  opacity: 0.28;
+  background: var(--rm-hero-rule-bg);
+  opacity: var(--rm-hero-rule-opacity);
 }
 
 .rm-hero::after {
@@ -205,7 +195,7 @@ main.container {
   position: absolute;
   inset: auto 0 0;
   height: 34%;
-  background: linear-gradient(180deg, transparent, var(--rm-ink));
+  background: var(--rm-hero-fade-bg);
 }
 
 .rm-hero-content {
@@ -1094,14 +1084,14 @@ main.container {
   margin: 0;
   color: var(--rm-landing-ink);
   font-family: var(--rm-landing-font-wordmark);
-  font-size: clamp(5.1rem, 15.8vw, 19rem);
+  font-size: var(--rm-landing-wordmark-size);
   font-stretch: condensed;
   font-weight: 900;
-  letter-spacing: clamp(-0.015em, 0.08vw, 0.02em);
-  line-height: 0.78;
+  letter-spacing: var(--rm-landing-wordmark-letter-spacing);
+  line-height: var(--rm-landing-wordmark-line-height);
   text-transform: uppercase;
-  max-width: calc(100vw - clamp(1rem, 2vw, 1.8rem));
-  transform: scaleY(1.48);
+  max-width: var(--rm-landing-wordmark-max-width);
+  transform: var(--rm-landing-wordmark-transform);
   transform-origin: center;
   white-space: nowrap;
 }
@@ -1223,10 +1213,10 @@ main.container {
   }
 
   .rm-landing-wordmark {
-    font-size: clamp(3.2rem, 15.5vw, 6.8rem);
+    font-size: var(--rm-landing-wordmark-mobile-size);
     letter-spacing: 0em;
-    max-width: calc(100vw - 1rem);
-    transform: scaleY(1.22);
+    max-width: var(--rm-landing-wordmark-mobile-max-width);
+    transform: var(--rm-landing-wordmark-mobile-transform);
     white-space: nowrap;
   }
 }
