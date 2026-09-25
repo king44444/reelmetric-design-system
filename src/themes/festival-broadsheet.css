@@ -260,5 +260,16 @@
 
   --rm-report-accent: #245c9c;
   --rm-report-accent-2: #c05a3b;
+
+  /* T165.05 -- script facts / scene timeline data colors (light on panel, WCAG 1.4.11 checked). */
+  --rm-tl-day: #b7791f;
+  --rm-tl-night: #2b3a67;
+  --rm-tl-dusk: #a23b72;
+  --rm-tl-int: #3b4252;
+  --rm-tl-ext: #3f8a2e;
+  --rm-tl-speak: #245c9c;
+  --rm-tl-absent: #e4e0d8;
+  --rm-tl-beat: #c05a3b;
+  --rm-tl-act-rule: #8a8a8a;
 }
 }
