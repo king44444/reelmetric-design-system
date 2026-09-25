@@ -1177,4 +1177,38 @@ body.rm-sr-scope {
   font-size: 0.92rem;
 }
 
+
+/* T165.05 -- script facts row and scene timeline (Phase 165). Tokens only; each cell's width is
+   set by the template as the custom property --w (a percentage of the lane). */
+.ru-facts { display: grid; grid-template-columns: repeat(7, minmax(0,1fr)); gap: .6rem; margin-bottom: 1rem; }
+.ru-fact { border: 1px solid var(--rm-report-panel-border); border-radius: var(--rm-report-panel-radius-sm); background: var(--rm-report-panel-bg); padding: var(--rm-report-card-padding-sm); }
+.ru-fact-label { color: var(--rm-report-muted); text-transform: uppercase; letter-spacing: .1em; font-size: .66rem; margin-bottom: .3rem; }
+.ru-fact-value { color: var(--rm-report-body); font-size: 1.05rem; font-weight: 700; line-height: 1.2; }
+.ru-timeline { margin: 0 0 1.2rem; }
+.ru-tl-row { display: grid; grid-template-columns: 7.5rem minmax(0,1fr); align-items: center; gap: .6rem; margin-bottom: .35rem; }
+.ru-tl-label { color: var(--rm-report-body); font-size: .74rem; font-weight: 600; overflow-wrap: anywhere; }
+.ru-tl-lane { display: flex; width: 100%; height: 1.1rem; background: var(--rm-tl-absent); border-radius: 2px; overflow: hidden; }
+.ru-tl-cell { flex: 0 0 auto; width: var(--w, 0%); height: 100%; background: var(--rm-tl-absent); }
+.ru-tl-act { border-left: 2px solid var(--rm-tl-act-rule); }
+.ru-tl-day { background: var(--rm-tl-day); }
+.ru-tl-night { background: var(--rm-tl-night); }
+.ru-tl-dusk { background: var(--rm-tl-dusk); }
+.ru-tl-int { background: var(--rm-tl-int); }
+.ru-tl-ext { background: var(--rm-tl-ext); }
+.ru-tl-intext { background: linear-gradient(90deg, var(--rm-tl-int) 50%, var(--rm-tl-ext) 50%); }
+.ru-tl-speak { background: var(--rm-tl-speak); }
+.ru-tl-beat { background: var(--rm-tl-beat); }
+.ru-tl-legend { display: flex; flex-wrap: wrap; gap: .3rem 1rem; margin-top: .6rem; color: var(--rm-report-body); font-size: .72rem; }
+.ru-tl-legend-item { display: inline-flex; align-items: center; gap: .35rem; }
+.ru-tl-swatch { display: inline-block; width: .8rem; height: .8rem; border-radius: 2px; border: 1px solid var(--rm-report-border-chip); }
+.ru-tl-note { color: var(--rm-report-muted); font-size: .72rem; margin-top: .4rem; }
+@media (max-width: 720px) {
+  .ru-facts { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .ru-tl-row { grid-template-columns: 4.5rem minmax(0,1fr); }
+}
+@media print {
+  .ru-fact, .ru-tl-cell, .ru-tl-swatch, .ru-tl-lane { -webkit-print-color-adjust: exact; print-color-adjust: exact; color-adjust: exact; }
+  .ru-timeline, .ru-facts { break-inside: avoid; page-break-inside: avoid; }
+}
+
 }

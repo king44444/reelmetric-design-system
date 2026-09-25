@@ -365,5 +365,16 @@
   --rm-fingerprint-romance: #b56576;
   --rm-fingerprint-sci-fi-fantasy: #2d8c8c;
   --rm-fingerprint-family-inspirational: #f4a261;
+
+  /* T165.05 -- script facts / scene timeline data colors (light on panel, WCAG 1.4.11 checked). */
+  --rm-tl-day: #b7791f;
+  --rm-tl-night: #2b3a67;
+  --rm-tl-dusk: #a23b72;
+  --rm-tl-int: #3b4252;
+  --rm-tl-ext: #3f8a2e;
+  --rm-tl-speak: #245c9c;
+  --rm-tl-absent: #e4e0d8;
+  --rm-tl-beat: #c05a3b;
+  --rm-tl-act-rule: #8a8a8a;
 }
 }
