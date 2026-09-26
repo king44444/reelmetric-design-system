@@ -276,20 +276,27 @@
     color-adjust: exact;
   }
 
-  /* Don't split a card, stat box, or hero in the middle of a page. */
-  .ru-hero, .ru-hero-copy, .ru-hero-side, .ru-card, .ru-stat,
-  .ru-comp-card, .ru-beat-card, .ru-char-card, .ru-angle-card,
+  /* Don't split a small card or stat box in the middle of a page. Only
+     elements that always fit on one page belong here: when a
+     break-inside:avoid box is taller than the space left, Chromium pushes
+     it to the next page (leaving the rest of this one blank) and then
+     splits it anyway. That is why .ru-hero, .ru-card and .ru-section are
+     deliberately NOT in this list -- a long synopsis or trailer arc made
+     them page-sized, which left page 1 empty and a blank half-page before
+     nearly every section. */
+  .ru-stat, .ru-comp-card, .ru-beat-card, .ru-char-card, .ru-angle-card,
   .ru-dialogue-line, .ru-money-shot, .ru-dist-row, .ru-pending {
     break-inside: avoid;
     page-break-inside: avoid;
   }
 
-  /* Sections break between each other, not through a heading. */
-  .ru-section { break-inside: avoid; page-break-inside: avoid; }
-  h1, h2, .ru-section-header {
+  /* Sections and cards flow across pages; keep each heading with what
+     follows it instead of stranding it at the bottom of a page. */
+  h1, h2, h3, .ru-section-header, .ru-section-sub, .ru-card-label {
     break-after: avoid;
     page-break-after: avoid;
   }
+  h1, h2, h3, .ru-card-label { break-inside: avoid; page-break-inside: avoid; }
 
   /* Long tables: let the table itself span pages, but keep each row --
      and its own heading row -- intact so a beat/genre line never splits. */
@@ -297,11 +304,19 @@
   .ru-arc-table thead, .ru-focus-table thead { display: table-header-group; }
   .ru-arc-table tr, .ru-focus-table tr { break-inside: avoid; page-break-inside: avoid; }
   .ru-table-scroll { overflow: visible; }
+  /* The template's inline nowrap on Type/Focus ("Peak Chaos Sequence")
+     made the arc wider than the printed page, clipping Description. */
+  .ru-arc-table td { white-space: normal !important; }
 
   /* Give print width back to a single readable column instead of the
      screen's dense multi-column grids, so nothing is squeezed or clipped. */
   .ru-hero { grid-template-columns: 1fr; }
-  .ru-two-col, .ru-comp-grid, .ru-beat-grid, .ru-char-grid { grid-template-columns: repeat(2, 1fr); }
+  .ru-two-col { grid-template-columns: repeat(2, 1fr); }
+  /* Card grids print as two-up flex rows, not CSS grid: Chromium treated a
+     grid of break-inside:avoid cards as one unbreakable block, pushing all
+     six trailer moments to the page after their heading. */
+  .ru-comp-grid, .ru-beat-grid, .ru-char-grid { display: flex; flex-wrap: wrap; gap: .9rem; }
+  .ru-comp-grid > *, .ru-beat-grid > *, .ru-char-grid > * { flex: 0 0 calc(50% - .45rem); }
   .ru-stat-grid { grid-template-columns: repeat(2, 1fr); }
 
   /* Genre labels like "Family/Inspirational" are one long slash-joined
