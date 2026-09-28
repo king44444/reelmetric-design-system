@@ -98,6 +98,14 @@
   --rm-section-ink-card-fg: #24211c;
   --rm-section-ink-card-bg: #fff7e8;
   --rm-section-paper-lead: #5f5646;
+  /* tokens.css's --rm-pill-fg/--rm-pill-bg default to white-on-white-tint,
+     tuned for the default dark --rm-section-ink-bg -- invisible (measured
+     1.01:1) against this theme's light ink section (--rm-section-ink-bg
+     above). Flipped to the ink foreground on a faint ink-tinted chip,
+     matching how --rm-line/--rm-section-ink-muted already handle the same
+     light-ink-section flip. */
+  --rm-pill-fg: #2e2a23;
+  --rm-pill-bg: rgba(36, 33, 28, 0.05);
   --rm-card-bg: #fffdf7;
   --rm-card-border: #d8cbb5;
   --rm-card-radius: 0px;
@@ -168,6 +176,13 @@
   --rm-hero-fg: #24211c;
   --rm-hero-kicker: #245c9c;
   --rm-hero-lead: #423d33;
+  /* .rm-topbar floats over .rm-hero (position:absolute) -- see tokens.css's
+     comment on --rm-topbar-brand-fg/-link-fg. This theme's hero flips light
+     (--rm-hero-bg/-fg above), so the header riding on top needs to flip
+     with it or it reads cream-on-cream: measured 1.05:1 (brand) / 1.06:1
+     (nav links) with the inherited default, 15.06:1 / 6.17:1 with this. */
+  --rm-topbar-brand-fg: #24211c;
+  --rm-topbar-link-fg: rgba(36, 33, 28, 0.72);
   --rm-hero-border: 2px solid #245c9c;
   --rm-hero-min-height: clamp(340px, 42vh, 470px);
   --rm-hero-min-height-tablet: 390px;

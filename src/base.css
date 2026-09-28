@@ -143,6 +143,18 @@ body.rm-theme-page {
   color: var(--rm-section-paper-lead);
 }
 
+/* Same fix as above, for the ink context: .rm-lead/.rm-muted default to
+   --rm-muted, which is tuned for the *default* dark --rm-section-ink-bg
+   (T151.10's monochrome set). A theme that flips --rm-section-ink-bg to a
+   light surface (festival-broadsheet) needs --rm-section-ink-muted here
+   instead -- that token already exists and already defaults to
+   var(--rm-muted), so this is a no-op for every theme that doesn't
+   override it. */
+.rm-section--ink .rm-lead,
+.rm-section--ink .rm-muted {
+  color: var(--rm-section-ink-muted);
+}
+
 .rm-muted {
   color: var(--rm-muted);
 }
