@@ -112,7 +112,7 @@ body.rm-theme-page {
 }
 
 .rm-theme-page h1 {
-  max-width: 12ch;
+  max-width: 20ch;
   margin-bottom: 1.3rem;
   font-family: var(--rm-font-serif);
   font-size: var(--rm-text-4xl);
