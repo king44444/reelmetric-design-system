@@ -37,7 +37,7 @@ main.container {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  color: var(--rm-cream);
+  color: var(--rm-topbar-brand-fg);
   font-weight: 900;
   text-decoration: none;
 }
@@ -63,14 +63,14 @@ main.container {
 }
 
 .rm-nav-links a {
-  color: rgba(247, 239, 225, 0.82);
+  color: var(--rm-topbar-link-fg);
   font-size: var(--rm-text-sm);
   font-weight: 750;
   text-decoration: none;
 }
 
 .rm-nav-links a:hover {
-  color: var(--rm-cream);
+  color: var(--rm-topbar-brand-fg);
 }
 
 /* Light-background variant: dark ink nav text for pages without a dark hero
@@ -241,8 +241,8 @@ main.container {
   padding: 0.36rem 0.72rem;
   border: 1px solid var(--rm-line);
   border-radius: 999px;
-  color: rgba(255, 255, 255, 0.85);
-  background: rgba(255, 255, 255, 0.06);
+  color: var(--rm-pill-fg);
+  background: var(--rm-pill-bg);
   font-size: var(--rm-text-xs);
   font-weight: 800;
 }

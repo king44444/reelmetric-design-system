@@ -64,6 +64,15 @@
   --rm-section-ink-card-fg: var(--rm-cream);
   --rm-section-ink-card-bg: var(--rm-panel);
   --rm-section-paper-lead: #58616d;
+  /* .rm-pill was hardcoded to these two literal values (white text on a
+     near-transparent white chip) with no override point, which assumed
+     every .rm-section--ink is dark like the default set above. A theme
+     that flips --rm-section-ink-bg to a light surface (festival-broadsheet)
+     needs to flip these too, so they're tokenized here with the prior
+     literal values kept as the default -- zero visual change for any
+     theme that doesn't override them. */
+  --rm-pill-fg: rgba(255, 255, 255, 0.85);
+  --rm-pill-bg: rgba(255, 255, 255, 0.06);
   --rm-card-bg: var(--rm-panel);
   --rm-card-border: var(--rm-line);
   --rm-card-radius: var(--rm-radius);
@@ -147,6 +156,15 @@
   --rm-hero-fg: var(--rm-cream);
   --rm-hero-kicker: rgba(247, 239, 225, 0.76);
   --rm-hero-lead: rgba(247, 239, 225, 0.76);
+  /* .rm-topbar is position:absolute specifically to float over .rm-hero
+     (see components.css's T153.10 comment on .rm-topbar--light), but its
+     .rm-brand/.rm-nav-links a were hardcoded to cream instead of reading
+     off the hero they sit on -- fine while every theme's hero was dark,
+     invisible the moment one isn't. Tokenized with the prior literal
+     values kept as the default, so this is a no-op for any theme that
+     doesn't override --rm-hero-bg/-fg. */
+  --rm-topbar-brand-fg: var(--rm-cream);
+  --rm-topbar-link-fg: rgba(247, 239, 225, 0.82);
   --rm-hero-border: 0 solid transparent;
   --rm-hero-min-height: clamp(360px, 46vh, 500px);
   --rm-hero-min-height-tablet: 420px;
