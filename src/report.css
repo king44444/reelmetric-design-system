@@ -327,6 +327,26 @@
      cannot fit. */
   .ru-dist-row { grid-template-columns: 11rem 1fr 4.5rem; }
   .ru-dist-label { overflow-wrap: break-word; word-break: normal; hyphens: none; }
+
+  /* T171.14 (Phase 171 exit criterion 9): the submitter report is a 5-6 page blueprint, and the
+     screen spacing printed it at 9. A smaller root size, tighter section and card padding and a
+     three-up comp grid bring the PACE report to 6 pages with its first comp card on page 2.
+     No `break-inside: avoid` is added to any page-sized block. */
+  html { font-size: 13px; }
+  .ru-section, .rm-report-section { padding: 1rem 1.2rem; margin-bottom: .6rem; }
+  .ru-hero { margin-bottom: .6rem; }
+  .ru-hero-copy { padding: 1rem 1.2rem; }
+  .ru-hero-copy h1 { margin: .3rem 0; }
+  .ru-hero-lead { margin-bottom: .3rem; }
+  .ru-section h2 { margin-bottom: .5rem; }
+  .ru-card { padding: .6rem .8rem; margin-bottom: .5rem; }
+  .ru-card ul, .ru-card li { margin-top: .1rem; margin-bottom: .1rem; }
+  .ru-comp-grid { gap: .6rem; }
+  .ru-comp-grid > * { flex: 0 0 calc(33.333% - .6rem); }
+  .ru-comp-card { padding: .6rem .7rem; }
+  .ru-comp-title { font-size: 1.05rem; }
+  .ru-comp-sub { margin-top: .15rem; }
+  .ru-dist-row { margin-bottom: .25rem; }
 }
 
 /* ============================================================
