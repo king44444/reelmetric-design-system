@@ -320,10 +320,13 @@
   .ru-stat-grid { grid-template-columns: repeat(2, 1fr); }
 
   /* Genre labels like "Family/Inspirational" are one long slash-joined
-     token with no space for the browser to wrap on, so at a narrow print
-     column they were overlapping the bar instead of wrapping under it. */
-  .ru-dist-row { grid-template-columns: 130px 1fr 70px; }
-  .ru-dist-label { overflow-wrap: anywhere; word-break: break-word; }
+     token with no space for the browser to wrap on. A 130px column with
+     `overflow-wrap: anywhere` fixed the label overlapping the bar by breaking it
+     mid-word ("Family/Inspirationa / l", T171.09). The column is now wide enough
+     for the longest canonical label, and the label only breaks if a word still
+     cannot fit. */
+  .ru-dist-row { grid-template-columns: 11rem 1fr 4.5rem; }
+  .ru-dist-label { overflow-wrap: break-word; word-break: normal; hyphens: none; }
 }
 
 /* ============================================================
