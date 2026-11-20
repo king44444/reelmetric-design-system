@@ -83,3 +83,40 @@ def test_landing_contact_link_keeps_wordmark_styling():
     landing_contact_block = css.split(".rm-landing-contact {", 1)[1].split("\n}", 1)[0]
     assert "color: inherit;" in landing_contact_block
     assert "text-decoration: none;" in landing_contact_block
+
+
+BRAND_LANDING_CLASSES = [
+    "rm-brand-landing",
+    "rm-brand-stage",
+    "rm-brand-topline",
+    "rm-brand-footline",
+    "rm-brand-main",
+    "rm-brand-logo",
+    "rm-brand-rule",
+    "rm-brand-tagline",
+]
+
+
+def test_brand_landing_classes_live_in_components_layer():
+    css = build_mod.build()["css"]
+    components_start = css.index("@layer components {")
+    components_end = css.index("\n@layer utilities {")
+    components_block = css[components_start:components_end]
+    missing = [c for c in BRAND_LANDING_CLASSES if f".{c}" not in components_block]
+    assert not missing, f"brand landing classes missing from @layer components: {missing}"
+
+
+def test_brand_landing_uses_the_style_guide_primary_palette():
+    css = build_mod.build()["css"]
+    root_block = css.split(":root {", 1)[1].split("\n}", 1)[0]
+    assert "--rm-brand-black: #000000;" in root_block
+    assert "--rm-brand-white: #ffffff;" in root_block
+    assert "--rm-brand-gold: #d09705;" in root_block
+    assert "Futura" in root_block.split("--rm-brand-font-display:", 1)[1].split(";", 1)[0]
+
+
+def test_brand_landing_motion_respects_reduced_motion():
+    css = build_mod.build()["css"]
+    reduced = css.split(".rm-brand-tagline {", 1)[1]
+    assert "@media (prefers-reduced-motion: reduce)" in reduced
+    assert "animation: none;" in reduced.split("@media (prefers-reduced-motion: reduce)", 1)[1]

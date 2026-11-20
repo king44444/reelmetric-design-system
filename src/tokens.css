@@ -139,6 +139,20 @@
   --rm-landing-wordmark-mobile-size: clamp(3.2rem, 15.5vw, 6.8rem);
   --rm-landing-wordmark-mobile-max-width: calc(100vw - 1rem);
   --rm-landing-wordmark-mobile-transform: scaleY(1.22);
+  /* Brand landing (ReelMetrics brand & style guide v0.1 draft, 2026-11-20):
+     black/white/gold primary group, Futura display with a Jost web fallback,
+     Georgia for reading copy. Separate from --rm-landing-* so no theme's
+     landing overrides reach the brand splash. */
+  --rm-brand-black: #000000;
+  --rm-brand-white: #ffffff;
+  --rm-brand-gold: #d09705;
+  --rm-brand-ink-soft: rgba(255, 255, 255, 0.82);
+  --rm-brand-ink-faint: rgba(255, 255, 255, 0.6);
+  --rm-brand-hairline: rgba(255, 255, 255, 0.14);
+  --rm-brand-font-display: Futura, "Futura PT", Jost, "Century Gothic", "Avenir Next", sans-serif;
+  --rm-brand-font-serif: Georgia, "Times New Roman", serif;
+  --rm-brand-gutter: clamp(1rem, 3.6vw, 3.5rem);
+  --rm-brand-logo-width: clamp(13.5rem, min(40vw, 82vh), 30rem);
   --rm-hero-bg:
     linear-gradient(90deg, rgba(9, 11, 15, 0.92), rgba(9, 11, 15, 0.66) 48%, rgba(9, 11, 15, 0.2)),
     linear-gradient(180deg, rgba(9, 11, 15, 0.2), rgba(9, 11, 15, 0.94)),
