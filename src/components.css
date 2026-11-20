@@ -1112,6 +1112,132 @@ main.container {
   font-family: var(--rm-landing-font-serif);
   text-align: center;
 }
+
+/* ── Brand landing ── the reelmetrics.ai homepage, built from the ReelMetrics
+   brand & style guide v0.1 draft (2026-11-20): a black field, the stacked
+   white logo centered with clear space, one gold accent rule, a Georgia
+   tagline, and small uppercase Futura labels in the corners. About 85%
+   neutral field, gold used once. */
+.rm-brand-landing {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100svh;
+  color: var(--rm-brand-white);
+  background: var(--rm-brand-black);
+  font-family: var(--rm-brand-font-serif);
+  -webkit-font-smoothing: antialiased;
+}
+
+.rm-brand-stage {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: var(--rm-brand-gutter);
+  box-sizing: border-box;
+}
+
+.rm-brand-topline,
+.rm-brand-footline {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0;
+  color: var(--rm-brand-ink-faint);
+  font-family: var(--rm-brand-font-display);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.rm-brand-topline {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--rm-brand-hairline);
+}
+
+.rm-brand-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: clamp(2.5rem, 8vh, 5rem) 0;
+  text-align: center;
+}
+
+.rm-brand-logo {
+  margin: 0;
+  line-height: 0;
+  animation: rm-brand-rise 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.rm-brand-logo img {
+  display: block;
+  width: var(--rm-brand-logo-width);
+  max-width: 100%;
+  height: auto;
+}
+
+.rm-brand-rule {
+  display: block;
+  width: 4.5rem;
+  height: 2px;
+  margin: clamp(2rem, 5vh, 3rem) auto clamp(1.4rem, 3.4vh, 2rem);
+  background: var(--rm-brand-gold);
+  transform-origin: center;
+  animation: rm-brand-draw 0.9s 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.rm-brand-tagline {
+  margin: 0;
+  color: var(--rm-brand-white);
+  font-family: var(--rm-brand-font-serif);
+  font-size: clamp(1.3rem, 2.3vw, 1.85rem);
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 1.3;
+  animation: rm-brand-fade 1s 0.7s ease both;
+}
+
+@keyframes rm-brand-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes rm-brand-draw {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes rm-brand-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 640px) {
+  .rm-brand-topline,
+  .rm-brand-footline {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.66rem;
+    text-align: center;
+  }
+
+  .rm-brand-logo img {
+    width: min(64vw, 17rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rm-brand-logo,
+  .rm-brand-rule,
+  .rm-brand-tagline {
+    animation: none;
+  }
+}
 }
 
 @layer utilities {
